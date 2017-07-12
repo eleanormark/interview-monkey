@@ -1,0 +1,31 @@
+{
+  "name": "interview-joint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack && node server",
+    "start": "node server",
+    "build": "webpack"
+  },
+  "author": "Eleanor Mark",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.12.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.1",
+    "morgan": "^1.7.0",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "recordrtc": "^5.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.3.13",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "webpack": "^1.13.1"
+  }
+}
