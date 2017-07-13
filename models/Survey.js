@@ -46,6 +46,9 @@ var SurveySchema = new Schema({
   title: {
     type: String
   },
+  category: {
+    type: String
+  },
   uuid: {
     type: String
   },

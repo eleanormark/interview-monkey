@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import NewQuestion from './components/NewQuestion';
+import NewQuestionsModal from './components/NewQuestionsModal';
 import RecordRTC from 'recordrtc';
 
 const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
@@ -11,7 +11,7 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            src: null
+            src: null,
         }
         
         this.requestUserMedia = this.requestUserMedia.bind(this);
@@ -29,10 +29,11 @@ class App extends React.Component {
         console.log('requestUserMedia');
     }
 
+
     render() {
         return (
             <div>
-                <NewQuestion />
+                <NewQuestionsModal />
             </div>
         );
     }
