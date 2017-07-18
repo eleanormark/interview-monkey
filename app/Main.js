@@ -1,0 +1,100 @@
+import React from 'react';
+import NewQuestionsModal from './components/NewQuestionsModal';
+import QuestionList from './components/QuestionList';
+import NavbarInstance from './components/NavbarInstance';
+import helpers from "./components/utils/helpers";
+import RecordRTC from 'recordrtc';
+
+const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+                        navigator.mozGetUserMedia || navigator.msGetUserMedia);
+
+class Main extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            src: null,
+            title: "",
+            category: "",
+            questions: "",
+            questionLists: [],
+            objs: [
+                {
+                    id: 1,
+                    title: "fizzbuzz",
+                },
+                {
+                    id: 2,
+                    title: 'isPalindrome',
+                },
+                {
+                    id: 3,
+                    title: 'letter count'
+                }
+            ]
+        }
+        
+        this.requestUserMedia = this.requestUserMedia.bind(this);
+        this.setInfo = this.setInfo.bind(this);
+        this.deleteList= this.deleteList.bind(this);
+    };
+
+    componentDidMount() {
+        if(!hasGetUserMedia) {
+            alert("Your browser cannot stream from your webcam. Please switch to Chrome or Firefox.");
+            return;
+        }
+            this.requestUserMedia();
+    }
+
+    deleteList(string) {
+        console.log( string, "delelte list ==================");
+    }
+
+    editList(string) {
+        console.log( string, "edit list =======================");
+    }
+
+    generateUUID(string) {
+        console.log( string, "UUID ========================");
+    }
+
+    requestUserMedia() {
+        console.log('requestUserMedia');
+    }
+
+    setInfo(title, category, questions) {
+        this.setState({ title: title });
+        this.setState({ category: category });
+        this.setState({ questions: questions });
+
+        console.log("========================= after in setInfo");
+        console.log(this.state);
+        console.log('arguments to set info')
+        console.log(arguments);
+    }
+
+    setQuestionList() {
+        this.setState({})
+    }
+
+    render() {
+        return (
+            <div>
+                <NavbarInstance />
+                <div className="container">
+                    <NewQuestionsModal setInfo={this.setInfo}/>
+                    <QuestionList 
+                        objs={this.state.objs} 
+                        onListDelete={this.deleteList}
+                        onListEdit={this.editList}
+                        onUUIDGenerate={this.generateUUID}
+                    />
+                </div>
+            </div>
+        );
+    }
+}
+
+
+export default Main;

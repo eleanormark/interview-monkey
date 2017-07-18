@@ -39,7 +39,7 @@ var ResponseSchema = new Schema({
   }
 });
 
-var SurveySchema = new Schema({
+var QuestionListSchema = new Schema({
   authorEmail: {
    type: String
  },
@@ -52,7 +52,7 @@ var SurveySchema = new Schema({
   uuid: {
     type: String
   },
-  questions: [QuestionSchema],
+  questions: QuestionSchema,
   responses: [ResponseSchema],
   date: {
     type: Date,
@@ -60,5 +60,5 @@ var SurveySchema = new Schema({
   }
 });
 
-var Survey = mongoose.model("Survey", SurveySchema);
-module.exports = Survey;
+var QuestionList = mongoose.model("QuestionList", QuestionListSchema);
+module.exports = QuestionList;

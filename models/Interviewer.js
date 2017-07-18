@@ -8,9 +8,9 @@ var InterviewerSchema = new Schema({
   email: {
     type: String
   },
-  surveys: [{
+  questionList: [{
     type: Schema.ObjectId,
-    ref: 'Survey'
+    ref: 'QuestionList'
     }],
   date: {
     type: Date,
