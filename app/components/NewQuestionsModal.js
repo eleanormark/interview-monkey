@@ -21,7 +21,6 @@ class NewQuestionsModal extends React.Component {
   this.handleSetQuestions = this.handleSetQuestions.bind(this);
 }
 
-
 open() {
   this.setState({showModal: true});
 }

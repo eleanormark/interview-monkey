@@ -4,6 +4,7 @@ import QuestionList from './components/QuestionList';
 import NavbarInstance from './components/NavbarInstance';
 import helpers from "./components/utils/helpers";
 import RecordRTC from 'recordrtc';
+const uuidv4 = require('uuid/v4');
 
 const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
                         navigator.mozGetUserMedia || navigator.msGetUserMedia);
@@ -18,6 +19,7 @@ class Main extends React.Component {
             category: "",
             questions: "",
             questionLists: [],
+            uuid: "",
             objs: [
                 {
                     id: 1,
@@ -56,7 +58,9 @@ class Main extends React.Component {
     }
 
     generateUUID(string) {
-        console.log( string, "UUID ========================");
+        var uuid =uuidv4();
+        this.setState({uuid:uuid});
+        console.log( string, uuid, "UUID ========================");
     }
 
     requestUserMedia() {
@@ -86,6 +90,7 @@ class Main extends React.Component {
                     <NewQuestionsModal setInfo={this.setInfo}/>
                     <QuestionList 
                         objs={this.state.objs} 
+                        uuid={this.state.uuid}
                         onListDelete={this.deleteList}
                         onListEdit={this.editList}
                         onUUIDGenerate={this.generateUUID}

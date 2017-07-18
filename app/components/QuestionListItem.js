@@ -29,15 +29,14 @@ const QuestionListItem = (obj) => {
         </button>
         &nbsp; 
         <input id= {obj.info.id + "-UUID" } />
-        &nbsp; 
+        &nbsp; {}
         <button type="button" className="btn btn-default btn-sm">
           <span className="glyphicon glyphicon-copy"></span>
         </button>
         </div>
       </td>
-
-  </tr>
-    
+    </tr>
   )
 };
+
 export default QuestionListItem;

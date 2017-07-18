@@ -1,7 +1,6 @@
-
 import React from 'react';
 
-class IntervewQA extends React.Component {
+class InterviewQA extends React.Component {
   render() {
     return <div>My Interview</div>;
   }

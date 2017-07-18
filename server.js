@@ -32,10 +32,9 @@ db.once("open", function() {
 //initialize api routes
 app.use("/api", require("./routes/apiRoutes"));
 //response route
-app.use("interviewee", require("./routes/intervieweeRoutes"));
+// app.use("interviewee", require("./routes/intervieweeRoutes"));
 // Main "/" Route. This will redirect the user to our rendered React application
-// app.use("/", require("./routes/viewRoutes"));
-app.use("/login", require("./routes/viewRoutes"));
+//app.use("/", require("./routes/viewRoutes"));
 
 // Listener
 app.listen(PORT, function() {

@@ -6,7 +6,8 @@ const QuestionList = (props) => {
     console.log(props);
   const questionListItems = props.objs.map((obj) => {
     return <QuestionListItem 
-              key={obj.id} info={obj} 
+              key={obj.id} 
+              info={obj} 
               onDeleteList={props.onListDelete}
               onEditList={props.onListEdit}
               onGenerateUUID={props.onUUIDGenerate}
