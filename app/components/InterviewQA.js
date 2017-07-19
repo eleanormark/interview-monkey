@@ -41,7 +41,6 @@ class InterviewQA extends React.Component {
           {this.props.match.params.uuid}
           {console.log(this.props.match.params.uuid)}
           <div>
-            {console.log(window.location.hostname)}
             {window.location.href}
             </div>
           <div className="row">

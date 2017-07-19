@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import helpers from "./utils/helpers";
+const uuidv4 = require('uuid/v4');
 
 class NewQuestionsModal extends React.Component {
     constructor() {
@@ -10,7 +11,9 @@ class NewQuestionsModal extends React.Component {
     showModal: false, 
     title: "",
     category: "",
-    questions: ""
+    questions: "",
+    uniqueLink: "",
+    uuid: ""
   };
 
   this.open = this.open.bind(this);
@@ -23,10 +26,19 @@ class NewQuestionsModal extends React.Component {
 
 open() {
   this.setState({showModal: true});
+  var uniqueLink = this.generateUniqueLink();
 }
 
 close() {
   this.setState({showModal: false});
+}
+
+generateUniqueLink() {
+  var uuid = uuidv4();
+  var uniqueLink = window.location.href + 'qa/' + uuid;
+  this.setState({uuid: uuid});
+  this.setState({uniqueLink: uniqueLink});
+  return uniqueLink;
 }
 
 // This function will respond to the user input
@@ -115,6 +127,9 @@ render() {
                 />
         
               </div>
+              <p>
+                <strong>Unique Link:</strong> {this.state.uniqueLink}
+              </p>
 
               <div className="form-group">
                 <textarea rows="12"
@@ -134,7 +149,7 @@ render() {
 
             <Modal.Footer>
               <Button onClick={this.close}>Close</Button>
-              <Button onClick={this.handleSubmit} bsStyle="warning"
+              <Button onClick={this.handleSubmit} bsStyle="info"
                 type="submit"
                 >
                 Create New List
