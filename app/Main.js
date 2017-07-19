@@ -39,6 +39,8 @@ class Main extends React.Component {
         this.requestUserMedia = this.requestUserMedia.bind(this);
         this.setInfo = this.setInfo.bind(this);
         this.deleteList= this.deleteList.bind(this);
+        this.editList = this.editList.bind(this);
+        this.generateUUID = this.generateUUID.bind(this);
     };
 
     componentDidMount() {

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter,BrowserRouter, Route, Link, Switch } from 'react-router-dom'
+import { HashRouter, Route, Link, Switch } from 'react-router-dom'
 import Main from './Main';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import InterviewQA from './components/InterviewQA';
-import ResponseLists from './components/ResponseLists';
+import ResponseListView from './ResponseListView';
 
 class App extends React.Component {
   render() {
@@ -15,10 +15,10 @@ class App extends React.Component {
         <Route exact path="/" component={Main} />
          <Route exact path="/login" component={Login} />
          <Route exact path="/signup" component={Signup} />
-         <Route exact path="/interviewqa" component={InterviewQA} />
-         <Route exact path="/responselists" component={ResponseLists} />
+         <Route exact path="/responselists" component={ResponseListView} />
+         <Route path="/qa/:uuid" component={InterviewQA} />
       </Switch>
-     </HashRouter>
+    </HashRouter>
     );
   }
 }

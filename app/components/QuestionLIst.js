@@ -28,7 +28,7 @@ const QuestionList = (props) => {
             <th>Date</th>
             <th>Delete</th>
             <th>Edit</th>
-            <th>UUID</th>
+            <th>Unique Link</th>
           </tr>
         </thead>
         <tbody>

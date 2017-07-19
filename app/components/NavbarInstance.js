@@ -1,10 +1,11 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const NavbarInstance = () => {
 
   return (
-  <Navbar inverse collapseOnSelect>
+  <Navbar collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
         <a style={{color:"#5bc0de"}} href="#">Interview Monkey</a>
@@ -13,12 +14,12 @@ const NavbarInstance = () => {
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
-        <NavItem eventKey={1} href="#">Question Lists</NavItem>
-        <NavItem eventKey={2} href="#">Response Lists</NavItem>
+        <NavItem eventKey={1} href="#"><Link to={'/'}>Question Lists</Link></NavItem>
+        <NavItem eventKey={2} href="#"><Link to={'/responseLists'}>Interviewee Responses</Link></NavItem>
       </Nav>
       <Nav pullRight>
-        <NavItem eventKey={1} href="#">Login</NavItem>
-        <NavItem eventKey={2} href="#">Sign Up</NavItem>
+        <NavItem eventKey={1} href="#"><Link to={'/login'}>Login</Link></NavItem>
+        <NavItem eventKey={2} href="#"><Link to={'/signup'}>Sign Up</Link></NavItem>
       </Nav>
     </Navbar.Collapse>
   </Navbar>

@@ -2,8 +2,6 @@
 //   res.sendFile(__dirname + "../public/index.html");
 // }
 
-
-
 const path = require('path');
 
 module.exports.index = function(req, res) {
