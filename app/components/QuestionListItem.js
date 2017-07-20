@@ -18,7 +18,7 @@ const QuestionListItem = (obj) => {
         </button>
       </td>
       <td>
-        <button onClick={() => obj.onEditList("test")} type="button" className="btn btn-info btn-sm">
+        <button onClick={() => obj.onEditList(obj.info)} type="button" className="btn btn-info btn-sm">
           <span className="glyphicon glyphicon-pencil"></span>
         </button>
       </td>

@@ -8,7 +8,7 @@ class NewQuestionsModal extends React.Component {
         super();
 
   this.state = {
-    showModal: false, 
+    showModal: false,
     title: "",
     category: "",
     uniqueLink: "",
