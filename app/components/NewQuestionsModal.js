@@ -4,7 +4,7 @@ import helpers from "./utils/helpers";
 const uuidv4 = require('uuid/v4');
 
 class NewQuestionsModal extends React.Component {
-    constructor() {
+  constructor() {
         super();
 
   this.state = {
@@ -94,6 +94,10 @@ render() {
             </Modal.Header>
 
             <Modal.Body>
+              <p>
+                <strong>Unique Link:</strong> {this.state.uniqueLink}
+              </p>
+
               <div className="form-group">
                 <label htmlFor="input-title" className="">
                   Title
@@ -108,7 +112,6 @@ render() {
                   required
                   name="input-title"
                 />
-        
               </div>
 
               <div className="form-group">
@@ -125,11 +128,7 @@ render() {
                   required
                   name="input-category"
                 />
-        
               </div>
-              <p>
-                <strong>Unique Link:</strong> {this.state.uniqueLink}
-              </p>
 
               <div className="form-group">
                 <textarea rows="12"
@@ -143,7 +142,6 @@ render() {
                   placeholder="Enter your list of questions here. Separate each question with a line break."
                 > 
                 </textarea>
-      
               </div>
             </Modal.Body>
 

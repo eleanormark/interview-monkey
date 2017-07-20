@@ -1,4 +1,5 @@
 import React from 'react';
+import InterviewQAItem from './InterviewQAItem';
 
 class InterviewQA extends React.Component {
 
@@ -8,7 +9,11 @@ class InterviewQA extends React.Component {
   this.state = { 
     fullname: "",
     position: "",
-    email: ""
+    email: "",
+    title: "10 Questions on Data Structures and Algorithms",
+    category: "Round One",
+    questions: ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10"],
+    answers: []
   };
 
   this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,17 +37,12 @@ class InterviewQA extends React.Component {
      this.setState({ email: event.target.value });
   }
 
-
   render() {
     return(
       <div className="container">
-        <h1>Interview Questions</h1>
+        <h2>{this.state.title}</h2>
+        <hr />
         <form className="" onSubmit={this.handleSubmit}>
-          {this.props.match.params.uuid}
-          {console.log(this.props.match.params.uuid)}
-          <div>
-            {window.location.href}
-            </div>
           <div className="row">
             <div className="form-group col-sm-4">
               <label htmlFor="fullname" className="">
@@ -54,7 +54,8 @@ class InterviewQA extends React.Component {
                 type="text"
                 className="form-control"
                 id="fullname"
-                onChange={this.handleSetFullName}
+                onChange={this.handleSetFullName} 
+                placeholder="FirstName LastName"
                 required
                 name="fullname"
               />
@@ -77,7 +78,7 @@ class InterviewQA extends React.Component {
               />
 
             </div>
-            <div className="form-group col-xs-3">
+            <div className="form-group col-sm-4">
               <label htmlFor="email" className="">
                   Email: &nbsp; 
               </label>
@@ -89,18 +90,24 @@ class InterviewQA extends React.Component {
                 id="email"
                 onChange={this.handleSetEmail}
                 required
-                placeholder="example@email.comr"
+                placeholder="example@email.com"
                 name="email"
               />
           
             </div>
           </div>
           
+            {this.state.questions.map(function(quest, i) {
+              return (
+                <InterviewQAItem question={quest} qaID={i} key={i} />
+              );
+            }.bind(this))}
+         
             <button
               className="btn btn-default"
               type="submit"
             >
-              Submit
+            Send
           </button>
         </form>
       </div>
