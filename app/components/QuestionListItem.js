@@ -6,12 +6,12 @@ const QuestionListItem = (obj) => {
   console.log(obj);
   return (
     <tr>
-      <td>{obj.info.id}</td>
+      <td>{obj.index + 1}</td>
       <td>{obj.info.title}</td>
-      <td>{obj.info.title}</td>
-      <td>{obj.info.title}</td>
-      <td>{obj.info.title}</td>
-      <td>{obj.info.title}</td>
+      <td>{obj.info.category}</td>
+      <td>{obj.info.questions.length}</td>
+      <td>{obj.info.date.substring(0,10)}</td>
+      <td>{obj.info.url}</td>
       <td>
         <button onClick={() => obj.onDeleteList("testing123")} type="button" className="btn btn-info btn-sm">
           <span className="glyphicon glyphicon-trash"></span>

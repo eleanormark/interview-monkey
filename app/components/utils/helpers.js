@@ -8,7 +8,7 @@ var helper = {
   // },
 
   // This function hits our own server to retrieve the record of query results
-  getSaved: function() {
+  getSavedQuestionList: function() {
     return axios.get("/api/questionList");
   },
 

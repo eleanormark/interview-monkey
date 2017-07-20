@@ -20,35 +20,34 @@ class Main extends React.Component {
             questions: "",
             questionLists: [],
             uuid: "",
-            objs: [
-                {
-                    id: 1,
-                    title: "fizzbuzz",
-                },
-                {
-                    id: 2,
-                    title: 'isPalindrome',
-                },
-                {
-                    id: 3,
-                    title: 'letter count'
-                }
-            ]
+            savedQuestionList: []
         }
         
         this.requestUserMedia = this.requestUserMedia.bind(this);
-        this.setInfo = this.setInfo.bind(this);
         this.deleteList= this.deleteList.bind(this);
         this.editList = this.editList.bind(this);
     };
 
+    // componentDidMount() {
+    //     if(!hasGetUserMedia) {
+    //         alert("Your browser cannot stream from your webcam. Please switch to Chrome or Firefox.");
+    //         return;
+    //     }
+    //         this.requestUserMedia();
+    // }
+
     componentDidMount() {
-        if(!hasGetUserMedia) {
-            alert("Your browser cannot stream from your webcam. Please switch to Chrome or Firefox.");
-            return;
-        }
-            this.requestUserMedia();
+    this.getSavedInterveiwQuestionList();
     }
+
+    getSavedInterveiwQuestionList() {
+        helpers.getSavedQuestionList().then(function(response) {
+            alert(response);
+            if (response !== this.state.savedQuestionList) {
+                this.setState({ savedQuestionList: response.data });
+            }
+    }.bind(this));
+  }
 
     deleteList(string) {
         console.log( string, "delelte list ==================");
@@ -62,17 +61,9 @@ class Main extends React.Component {
         console.log('requestUserMedia');
     }
 
-    setInfo(title, category, questions) {
+    // addInfo(obj) {
 
-        this.setState({ title: title });
-        this.setState({ category: category });
-        this.setState({ questions: questions });
-
-        console.log("========================= after in setInfo");
-        console.log(this.state);
-        console.log('+++++++++++++++++++++++++++++++++ questions ')
-        console.log(questions)
-    }
+    // }
 
     setQuestionList() {
         this.setState({})
@@ -83,10 +74,9 @@ class Main extends React.Component {
             <div>
                 <NavbarInstance />
                 <div className="container">
-                    <NewQuestionsModal setInfo={this.setInfo}/>
+                    <NewQuestionsModal />
                     <QuestionList 
-                        objs={this.state.objs} 
-                        uuid={this.state.uuid}
+                        objs={this.state.savedQuestionList} 
                         onListDelete={this.deleteList}
                         onListEdit={this.editList}
                     />

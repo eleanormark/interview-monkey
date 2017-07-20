@@ -4,10 +4,11 @@ import QuestionListItem from './QuestionListItem';
 const QuestionList = (props) => {
     console.log("=============================== in Question List")
     console.log(props);
-  const questionListItems = props.objs.map((obj) => {
+  const questionListItems = props.objs.map((obj, index) => {
     return <QuestionListItem 
-              key={obj.id} 
+              key={obj._id} 
               info={obj} 
+              index={index}
               onDeleteList={props.onListDelete}
               onEditList={props.onListEdit}
               onGenerateUUID={props.onUUIDGenerate}

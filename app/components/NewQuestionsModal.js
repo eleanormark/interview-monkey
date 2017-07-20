@@ -67,10 +67,13 @@ handleSubmit (event) {
     uuid: this.state.uuid,
     url: this.state.uniqueLink
   };
+
   helpers.postQuestionList(obj).then(function(response) {
-  }.bind(this))
+  }.bind(this));
+
+  // this.props.addInfo(obj);
   alert(this.state.questions);
-  this.setState({title:"", category:"", questions:""});
+  this.setState({title:"", category:"", questions:"", uniqueLink:"", uuid:""});
   document.getElementById('questions').value = "";
 }
 
