@@ -42,15 +42,20 @@ class Main extends React.Component {
 
     getSavedInterveiwQuestionList() {
         helpers.getSavedQuestionList().then(function(response) {
-            alert(response);
+            console.log( "get req +++++++++++++++++++++++++++++++++++++");
+            console.log(response);
+            console.log(response.data);
             if (response !== this.state.savedQuestionList) {
                 this.setState({ savedQuestionList: response.data });
             }
     }.bind(this));
   }
 
-    deleteList(string) {
-        console.log( string, "delelte list ==================");
+    deleteList(id) {
+        console.log( id, "delelte list id ==================");
+        helpers.deleteSavedQuestionList(id).then(function(response){
+            this.getSavedInterveiwQuestionList();
+        }.bind(this))
     }
 
     editList(string) {

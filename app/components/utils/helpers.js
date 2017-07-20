@@ -26,7 +26,7 @@ var helper = {
   },
 
  // This function deletes new question list to our database.
-  deleteSaved: function(id) {
+  deleteSavedQuestionList: function(id) {
       console.log(id);
       return axios.put("/api/questionList", {
           _id: id
