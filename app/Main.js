@@ -26,6 +26,7 @@ class Main extends React.Component {
         this.requestUserMedia = this.requestUserMedia.bind(this);
         this.deleteList= this.deleteList.bind(this);
         this.editList = this.editList.bind(this);
+        this.addInfo = this.addInfo.bind(this);
     };
 
     // componentDidMount() {
@@ -44,7 +45,6 @@ class Main extends React.Component {
         helpers.getSavedQuestionList().then(function(response) {
             console.log( "get req +++++++++++++++++++++++++++++++++++++");
             console.log(response);
-            console.log(response.data);
             if (response !== this.state.savedQuestionList) {
                 this.setState({ savedQuestionList: response.data });
             }
@@ -66,9 +66,10 @@ class Main extends React.Component {
         console.log('requestUserMedia');
     }
 
-    // addInfo(obj) {
-
-    // }
+    addInfo() {
+        alert("in addInfo");
+        this.getSavedInterveiwQuestionList();
+    }
 
     setQuestionList() {
         this.setState({})
@@ -79,7 +80,7 @@ class Main extends React.Component {
             <div>
                 <NavbarInstance />
                 <div className="container">
-                    <NewQuestionsModal />
+                    <NewQuestionsModal addInfo={this.addInfo} />
                     <QuestionList 
                         objs={this.state.savedQuestionList} 
                         onListDelete={this.deleteList}

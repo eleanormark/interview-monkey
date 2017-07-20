@@ -9,6 +9,7 @@ const QuestionList = (props) => {
               key={obj._id} 
               info={obj} 
               index={index}
+              addInfo={props.addInfo}
               onDeleteList={props.onListDelete}
               onEditList={props.onListEdit}
               onGenerateUUID={props.onUUIDGenerate}
