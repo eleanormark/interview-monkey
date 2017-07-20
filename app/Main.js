@@ -53,8 +53,6 @@ class Main extends React.Component {
 
     getSavedInterveiwQuestionList() {
         helpers.getSavedQuestionList().then(function(response) {
-            console.log( "get req +++++++++++++++++++++++++++++++++++++");
-            console.log(response);
             if (response !== this.state.savedQuestionList) {
                 this.setState({ savedQuestionList: response.data });
             }
@@ -62,7 +60,7 @@ class Main extends React.Component {
   }
 
     deleteList(id) {
-        console.log( id, "delelte list id ==================");
+
         helpers.deleteSavedQuestionList(id).then(function(response){
             this.getSavedInterveiwQuestionList();
         }.bind(this))
@@ -87,17 +85,14 @@ class Main extends React.Component {
     }.bind(this));
 
     helpers.deleteSavedQuestionList(this.state.modul_id).then(function(res){
-            alert("in delete");
             this.getSavedInterveiwQuestionList();
-        }.bind(this));
+    }.bind(this));
 
     this.setState({title:"", category:"", questions:"", uniqueLink:"", uuid:""});
     document.getElementById('questions').value = "";
     }
 
     editList(obj) {
-        console.log( "edit list =======================");
-        console.log(obj);
         this.setState({modul_id: obj._id})
         this.setState({modalurl: obj.url});
         this.setState({modaluuid: obj.uuid});
@@ -116,7 +111,6 @@ class Main extends React.Component {
     }
 
     addInfo() {
-        alert("in addInfo");
         this.getSavedInterveiwQuestionList();
     }
 
