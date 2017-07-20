@@ -22,7 +22,6 @@ class NewQuestionsModal extends React.Component {
   this.handleSetTitle = this.handleSetTitle.bind(this);
   this.handleSetCategory = this.handleSetCategory.bind(this);
   this.handleSetQuestions = this.handleSetQuestion.bind(this);
-  
 }
 
 open() {
@@ -59,7 +58,7 @@ handleSubmit (event) {
   event.preventDefault();
 
   var str = document.getElementById('questions').value;
-  var questarr= str.split("\n");
+  var questarr= str.split("\n\n");
 
   var obj = {      
     title: this.state.title,
@@ -138,7 +137,7 @@ render() {
                   onChange={this.handleSetQuestions}
                   required
                   name="input-questions"
-                  placeholder="Enter questions separated by new line."
+                  placeholder="Enter questions separated by two new line breaks."
                 > 
               </textarea>
               </div>
