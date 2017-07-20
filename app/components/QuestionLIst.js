@@ -23,16 +23,15 @@ const QuestionList = (props) => {
             <th>#</th>
             <th>Title</th>
             <th>Category</th>
-            <th>#Res</th>
             <th>#Quest</th>
             <th>Date</th>
+            <th>Unique Link</th>
             <th>Delete</th>
             <th>Edit</th>
-            <th>Unique Link</th>
           </tr>
         </thead>
         <tbody>
-              {questionListItems}
+          {questionListItems}
         </tbody>
       </table>
     </div>

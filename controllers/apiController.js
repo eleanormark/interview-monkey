@@ -15,20 +15,28 @@ var QuestionList = require ('../models/QuestionList');
 }
 
 module.exports.postQuestionList= function(req, res) {
+  console.log("=======================in apiController postQuestionList")
 
-  QuestionList.create({
+  console.log(req.body.questions)
+
+  var newQuestionList  = new QuestionList ({
     title: req.body.title,
     category: req.body.category,
-    questions: req.body.questions,
+    uuid: req.body.uuid,
+    url: req.body.url,
     date: Date.now()
-  }, function(err) {
-    if (err) {
-      console.log(err);
-    }
-    else {
-      res.send("========================= Saved Search");
+  });
+
+  req.body.questions.forEach(function(quest){
+    if (quest !== ''){ 
+       newQuestionList.questions.push({question:quest});
     }
   });
+  
+  newQuestionList.save(function (err) {
+    if (err) return handleError(err);
+    console.log("saved new list");
+  })
 }
 
 module.exports.deleteQuestionList = function(req, res) {

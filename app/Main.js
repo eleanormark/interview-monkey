@@ -40,7 +40,6 @@ class Main extends React.Component {
         this.setInfo = this.setInfo.bind(this);
         this.deleteList= this.deleteList.bind(this);
         this.editList = this.editList.bind(this);
-        this.generateUUID = this.generateUUID.bind(this);
     };
 
     componentDidMount() {
@@ -59,25 +58,20 @@ class Main extends React.Component {
         console.log( string, "edit list =======================");
     }
 
-    generateUUID(string) {
-        var uuid =uuidv4();
-        this.setState({uuid:uuid});
-        console.log( string, uuid, "UUID ========================");
-    }
-
     requestUserMedia() {
         console.log('requestUserMedia');
     }
 
     setInfo(title, category, questions) {
+
         this.setState({ title: title });
         this.setState({ category: category });
         this.setState({ questions: questions });
 
         console.log("========================= after in setInfo");
         console.log(this.state);
-        console.log('arguments to set info')
-        console.log(arguments);
+        console.log('+++++++++++++++++++++++++++++++++ questions ')
+        console.log(questions)
     }
 
     setQuestionList() {
@@ -95,7 +89,6 @@ class Main extends React.Component {
                         uuid={this.state.uuid}
                         onListDelete={this.deleteList}
                         onListEdit={this.editList}
-                        onUUIDGenerate={this.generateUUID}
                     />
                 </div>
             </div>

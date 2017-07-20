@@ -11,9 +11,9 @@ class NewQuestionsModal extends React.Component {
     showModal: false, 
     title: "",
     category: "",
-    questions: "",
     uniqueLink: "",
-    uuid: ""
+    uuid: "",
+    questions: ""
   };
 
   this.open = this.open.bind(this);
@@ -21,7 +21,8 @@ class NewQuestionsModal extends React.Component {
   this.handleSubmit = this.handleSubmit.bind(this);
   this.handleSetTitle = this.handleSetTitle.bind(this);
   this.handleSetCategory = this.handleSetCategory.bind(this);
-  this.handleSetQuestions = this.handleSetQuestions.bind(this);
+  this.handleSetQuestions = this.handleSetQuestion.bind(this);
+  
 }
 
 open() {
@@ -50,30 +51,28 @@ handleSetCategory(event) {
   this.setState({ category: event.target.value });
 }
 
-handleSetQuestions(event) {
+handleSetQuestion(event) {
   this.setState({ questions: event.target.value });
 }
 
-
-// When a user submits...
 handleSubmit (event) {
-  // prevent the HTML from trying to submit a form if the user hits "Enter" instead of
-  // clicking the button
   event.preventDefault();
+
+  var str = document.getElementById('questions').value;
+  var questarr= str.split("\n");
 
   var obj = {      
     title: this.state.title,
     category: this.state.category,
-    questions: this.state.questions
+    questions: questarr,
+    uuid: this.state.uuid,
+    url: this.state.uniqueLink
   };
-  helpers.postSaved(obj).then(function(response) {
-    this.props.setInfo(this.state.title, this.state.category, this.state.questions);
-      console.log("============================= in handleSubmint");
-      console.log(this.state.title, this.state.category, this.state.questions);
+  helpers.postQuestionList(obj).then(function(response) {
   }.bind(this))
-
-  // this.props.setBeginDate(this.state.begin_date);
-  this.setState({ title: "", category: "", questions: "" });
+  alert(this.state.questions);
+  this.setState({title:"", category:"", questions:""});
+  document.getElementById('questions').value = "";
 }
 
 render() {
@@ -139,9 +138,9 @@ render() {
                   onChange={this.handleSetQuestions}
                   required
                   name="input-questions"
-                  placeholder="Enter your list of questions here. Separate each question with a line break."
+                  placeholder="Enter questions separated by new line."
                 > 
-                </textarea>
+              </textarea>
               </div>
             </Modal.Body>
 

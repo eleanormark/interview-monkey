@@ -52,7 +52,10 @@ var QuestionListSchema = new Schema({
   uuid: {
     type: String
   },
-  questions: QuestionSchema,
+  url: {
+    type: String
+  },
+  questions: [QuestionSchema],
   responses: [ResponseSchema],
   date: {
     type: Date,

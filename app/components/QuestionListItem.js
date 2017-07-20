@@ -22,19 +22,6 @@ const QuestionListItem = (obj) => {
           <span className="glyphicon glyphicon-pencil"></span>
         </button>
       </td>
-      <td>
-        <div className="form-group">
-        <button onClick={() => obj.onGenerateUUID("test")} type="button" className="btn btn-info btn-sm">
-          <span className="glyphicon glyphicon-random"></span>
-        </button>
-        &nbsp; 
-        <input id= {obj.info.id + "-UUID" } />
-        &nbsp; {}
-        <button type="button" className="btn btn-default btn-sm">
-          <span className="glyphicon glyphicon-copy"></span>
-        </button>
-        </div>
-      </td>
     </tr>
   )
 };

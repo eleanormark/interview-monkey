@@ -13,12 +13,15 @@ var helper = {
   },
 
   // This function posts new question list to our database.
-  postSaved: function(obj) {
-      alert("in postSaved =======");
+  postQuestionList: function(obj) {
+      alert("in helper.js  postQuestionList =======");
+    
     return axios.post("/api/questionList", {
       title: obj.title,
       category: obj.category,
-      questions: obj.questions
+      questions: obj.questions,
+      uuid: obj.uuid,
+      url: obj.url
     });
   },
 

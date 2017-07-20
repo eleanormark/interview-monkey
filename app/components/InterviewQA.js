@@ -1,28 +1,48 @@
 import React from 'react';
 import InterviewQAItem from './InterviewQAItem';
+import helpers from "./utils/helpers";
 
 class InterviewQA extends React.Component {
 
   constructor() {
         super();
-
+  var str= "How can you traverse binary tree?"
   this.state = { 
     fullname: "",
     position: "",
     email: "",
     title: "10 Questions on Data Structures and Algorithms",
     category: "Round One",
-    questions: ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10"],
+    questions: [str,str,str],
     answers: []
   };
 
-  this.handleSubmit = this.handleSubmit.bind(this);
+  this.handleSend = this.handleSend.bind(this);
   this.handleSetFullName = this.handleSetFullName.bind(this);
   this.handleSetPosition = this.handleSetPosition.bind(this);
   this.handleSetEmail = this.handleSetEmail.bind(this);
 }
-  handleSubmit() {
-    console.log("handleSubmit");
+  handleSend() {
+    event.preventDefault();
+
+    var arr = [];
+    var responseObj = {      
+      title: this.state.title,
+      fullname: "",
+      position: "",
+      eamil: "",
+      responses: []
+    };
+
+    responseObj.fullname = document.getElementById('fullname').value.trim();
+    responseObj.position = document.getElementById('position').value.trim();
+    responseObj.email = document.getElementById('email').value.trim();
+  
+    this.state.questions.map(function(element, index) {
+      var ans = document.getElementById('textarea_'+ index).value.trim();
+      responseObj.responses.push(ans);
+    });
+    
   }
 
   handleSetFullName(event) {
@@ -42,7 +62,7 @@ class InterviewQA extends React.Component {
       <div className="container">
         <h2>{this.state.title}</h2>
         <hr />
-        <form className="" onSubmit={this.handleSubmit}>
+        <form className="">
           <div className="row">
             <div className="form-group col-sm-4">
               <label htmlFor="fullname" className="">
@@ -103,7 +123,7 @@ class InterviewQA extends React.Component {
               );
             }.bind(this))}
          
-            <button
+            <button onClick={this.handleSend}
               className="btn btn-default"
               type="submit"
             >
