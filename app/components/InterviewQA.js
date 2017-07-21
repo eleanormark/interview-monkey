@@ -23,23 +23,28 @@ class InterviewQA extends React.Component {
   this.handleSetPosition = this.handleSetPosition.bind(this);
   this.handleSetEmail = this.handleSetEmail.bind(this);
 }
-  componentDidMount() {
+  componentWillMount() {
  
     var str = window.location.href
     var n = str.search("/#/qa/");
     var uuid = str.slice(n+6);
 
-    helpers.getQuestionsWithUUID(uuid).then(function(response) {
-      if (response.data !== this.state.responseData) {
-           this.setState({ responseData: response.data });
-           console.log("response +++++ +++++++++++++++++");
-               console.log(this.state.responseData[0].questions);
-               this.state.responseData[0].questions.map(function(q,i){
-                  console.log(q.question)
-               });
+    // helpers.getQuestionsWithUUID(uuid).then(function(response) {
+    //   if (response !== this.state.responseData) {
+    //        this.setState({ responseData: response.data });
+    //        console.log("response +++++ +++++++++++++++++");
+    //           //  console.log(this.state.responseData[0].questions);
+    //           //  this.state.responseData[0].questions.map(function(q,i){
+    //           //     console.log(q.question)
+    //           //  });
 
-      }
-    }.bind(this));
+    //   }
+    // }.bind(this));
+    if (!this.state.responseData) {
+   helpers.getQuestionsWithUUID(uuid).then(function (response) {
+      this.setState({ responseData: response.data });
+   });
+}
   }
 
   handleSend() {
@@ -77,7 +82,19 @@ class InterviewQA extends React.Component {
      this.setState({ email: event.target.value });
   }
 
-  render() {
+   render() {
+     if (!this.state.responseData) {
+      return (
+            <div>Loading...</div>
+      );
+    }
+
+    if (this.state.responseData != []) {
+      return (
+            <div>Loading...</div>
+      );
+    }
+    
     return(
       <div className="container">
         <h2>{this.state.title}</h2>
@@ -136,7 +153,7 @@ class InterviewQA extends React.Component {
           
             </div>
           </div>
-            {console.log(this.state.responseData[0])}
+            {console.log(this.state.responseData)}
             {this.state.responseData[0].questions.map(function(quest, i) {
               return (
                 <InterviewQAItem question={quest.question} qaID={i} key={i} />
