@@ -24,15 +24,27 @@ class InterviewQA extends React.Component {
   this.handleSetEmail = this.handleSetEmail.bind(this);
 }
   componentDidMount() {
+ 
     var str = window.location.href
     var n = str.search("/#/qa/");
     var uuid = str.slice(n+6);
 
+    // helpers.getQuestionsWithUUID(uuid).then(function(response) {
+    //   if (response !== this.state.responseData) {
+    //        this.setState({ responseData: response.data });
+    //        console.log("response +++++ +++++++++++++++++");
+    //           //  console.log(this.state.responseData[0].questions);
+    //           //  this.state.responseData[0].questions.map(function(q,i){
+    //           //     console.log(q.question)
+    //           //  });
+
+    //   }
+    // }.bind(this));
     if ( !this.state.responseData) {
-      helpers.getQuestionsWithUUID(uuid).then(function (response) {
-        this.setState({ responseData: response.data });
-      }.bind(this));
-    }
+   helpers.getQuestionsWithUUID(uuid).then(function (response) {
+      this.setState({ responseData: response.data });
+   }.bind(this));
+}
   }
 
   handleSend() {
@@ -79,7 +91,7 @@ class InterviewQA extends React.Component {
     
     return (
       <div className="container">
-        <h2>{this.state.title}</h2>
+        <h2>{this.state.responseData[0].title}</h2>
         <hr />
         <form className="">
           <div className="row">
@@ -135,7 +147,7 @@ class InterviewQA extends React.Component {
           
             </div>
           </div>
-           {console.log("++============response data=")}
+           {console.log("====+++==============response data=")}
             {console.log(this.state.responseData)}
             {this.state.responseData[0].questions.map(function(quest, i) {
               return (
