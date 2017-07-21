@@ -12,4 +12,6 @@ router.post("/questionList", apiController.postQuestionList);
 // This is the route we will send PUT requests to delete each list of questions.
 router.put("/questionList", apiController.deleteQuestionList);
 
+router.get("/questionsuuid", apiController.getQuestionsforUUID);
+
 module.exports = router;

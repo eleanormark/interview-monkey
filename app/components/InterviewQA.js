@@ -14,7 +14,8 @@ class InterviewQA extends React.Component {
     title: "10 Questions on Data Structures and Algorithms",
     category: "Round One",
     questions: [str,str,str],
-    answers: []
+    answers: [],
+    responseData: []
   };
 
   this.handleSend = this.handleSend.bind(this);
@@ -22,6 +23,23 @@ class InterviewQA extends React.Component {
   this.handleSetPosition = this.handleSetPosition.bind(this);
   this.handleSetEmail = this.handleSetEmail.bind(this);
 }
+  componentDidMount() {
+ 
+    var str = window.location.href
+    var n = str.search("/#/qa/");
+    var uuid = str.slice(n+6);
+
+    helpers.getQuestionsWithUUID(uuid).then(function(response) {
+         console.log("response +++++++++++++++++");
+         console.log(response.data);
+
+
+      if (response.data !== this.state.responseData) {
+           this.setState({ responseData: response.data });
+      }
+    }.bind(this));
+  }
+
   handleSend() {
     event.preventDefault();
 

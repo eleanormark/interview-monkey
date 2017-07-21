@@ -12,6 +12,12 @@ var helper = {
     return axios.get("/api/questionList");
   },
 
+  getQuestionsWithUUID: function(_uuid) {
+    console.log("=======helper file++++++++++++++++++++++ uuid");
+    console.log(_uuid);
+  return axios.get("/api/questionsuuid?uuid=" + _uuid);
+  },
+
   // This function posts new question list to our database.
   postQuestionList: function(obj) {
       alert("in helper.js  postQuestionList =======");

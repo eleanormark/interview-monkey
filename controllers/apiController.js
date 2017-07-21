@@ -14,6 +14,24 @@ var QuestionList = require ('../models/QuestionList');
   });
 }
 
+module.exports.getQuestionsforUUID = function (req, res) {
+  console.log("controller uuid =======================")
+  console.log(req.query.uuid)
+  QuestionList.find({ uuid: req.query.uuid }).sort([
+    ["date", "descending"]
+  ]).exec(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+      console.log(doc)
+    }
+  });
+}
+
+
+
 module.exports.postQuestionList= function(req, res) {
   console.log("=======================in apiController postQuestionList")
 
