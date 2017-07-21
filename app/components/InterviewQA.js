@@ -15,7 +15,7 @@ class InterviewQA extends React.Component {
     category: "Round One",
     questions: [str,str,str],
     answers: [],
-    responseData: []
+    responseData: null
   };
 
   this.handleSend = this.handleSend.bind(this);
@@ -23,28 +23,16 @@ class InterviewQA extends React.Component {
   this.handleSetPosition = this.handleSetPosition.bind(this);
   this.handleSetEmail = this.handleSetEmail.bind(this);
 }
-  componentWillMount() {
- 
+  componentDidMount() {
     var str = window.location.href
     var n = str.search("/#/qa/");
     var uuid = str.slice(n+6);
 
-    // helpers.getQuestionsWithUUID(uuid).then(function(response) {
-    //   if (response !== this.state.responseData) {
-    //        this.setState({ responseData: response.data });
-    //        console.log("response +++++ +++++++++++++++++");
-    //           //  console.log(this.state.responseData[0].questions);
-    //           //  this.state.responseData[0].questions.map(function(q,i){
-    //           //     console.log(q.question)
-    //           //  });
-
-    //   }
-    // }.bind(this));
-    if (!this.state.responseData) {
-   helpers.getQuestionsWithUUID(uuid).then(function (response) {
-      this.setState({ responseData: response.data });
-   });
-}
+    if ( !this.state.responseData) {
+      helpers.getQuestionsWithUUID(uuid).then(function (response) {
+        this.setState({ responseData: response.data });
+      }.bind(this));
+    }
   }
 
   handleSend() {
@@ -83,19 +71,13 @@ class InterviewQA extends React.Component {
   }
 
    render() {
-     if (!this.state.responseData) {
-      return (
-            <div>Loading...</div>
-      );
-    }
-
-    if (this.state.responseData != []) {
+     if ( !this.state.responseData) {
       return (
             <div>Loading...</div>
       );
     }
     
-    return(
+    return (
       <div className="container">
         <h2>{this.state.title}</h2>
         <hr />
@@ -153,6 +135,7 @@ class InterviewQA extends React.Component {
           
             </div>
           </div>
+           {console.log("++============response data=")}
             {console.log(this.state.responseData)}
             {this.state.responseData[0].questions.map(function(quest, i) {
               return (
