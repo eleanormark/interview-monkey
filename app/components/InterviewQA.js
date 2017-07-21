@@ -30,12 +30,14 @@ class InterviewQA extends React.Component {
     var uuid = str.slice(n+6);
 
     helpers.getQuestionsWithUUID(uuid).then(function(response) {
-         console.log("response +++++++++++++++++");
-         console.log(response.data);
-
-
       if (response.data !== this.state.responseData) {
            this.setState({ responseData: response.data });
+           console.log("response +++++ +++++++++++++++++");
+               console.log(this.state.responseData[0].questions);
+               this.state.responseData[0].questions.map(function(q,i){
+                  console.log(q.question)
+               });
+
       }
     }.bind(this));
   }
@@ -134,10 +136,10 @@ class InterviewQA extends React.Component {
           
             </div>
           </div>
-          
-            {this.state.questions.map(function(quest, i) {
+            {console.log(this.state.responseData[0])}
+            {this.state.responseData[0].questions.map(function(quest, i) {
               return (
-                <InterviewQAItem question={quest} qaID={i} key={i} />
+                <InterviewQAItem question={quest.question} qaID={i} key={i} />
               );
             }.bind(this))}
          
