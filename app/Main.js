@@ -37,6 +37,8 @@ class Main extends React.Component {
         this.openEditModal = this.openEditModal.bind(this);
         this.closeEditModal = this.closeEditModal.bind(this);
         this.handleSubmitEdit = this.handleSubmitEdit.bind(this);
+        this.handleEditCategory = this.handleEditCategory.bind(this);
+        this.handleEditTitle = this.handleEditTitle.bind(this);
     };
 
     openEditModal() {
@@ -60,10 +62,17 @@ class Main extends React.Component {
   }
 
     deleteList(id) {
-
         helpers.deleteSavedQuestionList(id).then(function(response){
             this.getSavedInterveiwQuestionList();
         }.bind(this))
+    }
+
+    handleEditCategory(event) {
+        this.setState({ modalcategory: event.target.value });
+    }
+
+    handleEditTitle(event) {
+        this.setState({modaltitle: event.target.value})
     }
 
     handleSubmitEdit(){
@@ -103,10 +112,8 @@ class Main extends React.Component {
         obj.questions.forEach(function(element,i){
             tempStr += element.question +"\n\n";
         })
-        alert(tempStr);
    
         this.setState({modalQuestionStr: tempStr});
-
         this.openEditModal();
     }
 
@@ -155,7 +162,7 @@ class Main extends React.Component {
                                 type="text"
                                 className="form-control"
                                 id="title"
- 
+                                onChange={this.handleEditTitle}
                                 required
                                 name="input-title"
                                 />
@@ -171,7 +178,7 @@ class Main extends React.Component {
                                 type="text"
                                 className="form-control"
                                 id="category"
-      
+                                onChange={this.handleEditCategory}
                                 required
                                 name="input-category"
                                 />
@@ -179,11 +186,9 @@ class Main extends React.Component {
 
                             <div className="form-group">
                                 <textarea rows="12"
- 
                                 type="text"
                                 className="form-control"
-                                id="questions-modal"
-          
+                                id="questions-modal"      
                                 required
                                 name="input-questions"
                                 placeholder="Enter questions separated by two new line breaks."
