@@ -35,7 +35,7 @@ class InterviewQA extends React.Component {
         this.setState({ title: response.data[0].title });
         this.setState({ questionID: response.data[0]._id});
        }.bind(this));
-}
+    }
   }
 
   handleSend(event) {

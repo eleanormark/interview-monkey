@@ -8,7 +8,8 @@ class ResponseList extends React.Component {
             super();
     
         this.state = { 
-        title: ""
+            title: "",
+            qaResponseData: null
         };
     }
     
@@ -17,36 +18,57 @@ class ResponseList extends React.Component {
     }
 
     getSavedInterveiwQuestionList() {
-        helpers.getSavedQuestionList().then(function(response) {
-            if (response !== this.state.savedQuestionList) {
-                this.setState({ savedQuestionList: response.data });
-            }
-    }.bind(this));
-  }
-  render() {
-    return(
-            <div>
-                <NavbarInstance />
-                <div className="container">
-                    <h3 className="page-header">Responses</h3>
-                    <table className="table" id="response-list-table">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>QA List</th>
-                            <th>Replied Date</th>
-                            <th>Status</th>
-                            <th>Delete</th>
-                            <th>View</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            {}
-                        </tbody>
-                    </table>
+        if ( !this.state.qaResponseData) {
+            helpers.getSavedQuestionList().then(function(response) {
+                this.setState({ qaResponseData: response.data });
+                console.log(this.state.qaResponseData);
+            }.bind(this));
+        }
+    }
+    render() {
+        if ( !this.state.qaResponseData) {
+            return (
+            <div>Loading...</div>
+            );
+        }
+
+        return(
+                <div>
+                    <NavbarInstance />
+                    <div className="container">
+                        <h3 className="page-header">Responses</h3>
+                        <table className="table" id="response-list-table">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Question List</th>
+                                <th>Category</th>
+                                <th>Replied Date</th>
+                                <th>Delete</th>
+                                <th>View</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                                { this.state.qaResponseData.map(function(res1,i){
+   
+                                  return(
+                                    res1.responses.map(function(res2, j){
+                                         return (
+                                            <ResponseListItem res1={res1} res2={res2} key={j+"res2"}/>
+                                         )
+                                    
+                                    
+                                    })
+                                  )
+                                  }.bind(this))
+                                }
+                                
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
         ); 
   }
 }
