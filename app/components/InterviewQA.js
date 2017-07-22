@@ -6,7 +6,7 @@ class InterviewQA extends React.Component {
 
   constructor() {
         super();
-  var str= "How can you traverse binary tree?"
+  
   this.state = { 
     title: "",
     questions: [],

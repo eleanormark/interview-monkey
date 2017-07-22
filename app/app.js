@@ -5,7 +5,7 @@ import Main from './Main';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import InterviewQA from './components/InterviewQA';
-import ResponseListView from './ResponseListView';
+import ResponseList from './ResponseList';
 
 class App extends React.Component {
   render() {
@@ -15,7 +15,7 @@ class App extends React.Component {
         <Route exact path="/" component={Main} />
          <Route exact path="/login" component={Login} />
          <Route exact path="/signup" component={Signup} />
-         <Route exact path="/responselists" component={ResponseListView} />
+         <Route exact path="/responselist" component={ResponseList} />
          <Route path="/qa/:uuid" component={InterviewQA} />
       </Switch>
     </HashRouter>
