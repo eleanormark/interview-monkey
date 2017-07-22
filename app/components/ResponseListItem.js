@@ -16,8 +16,8 @@ const ResponseListItem = (data) => {
                 </button>
             </td>
             <td>
-                <button type="button" className="btn btn-info btn-sm">
-                <span className="glyphicon glyphicon-pencil"></span>
+                <button onClick={() => data.onViewAnswers(data.res1, data.res2)} type="button" className="btn btn-info btn-sm">
+                <span className="glyphicon glyphicon-eye-open"></span>
                 </button>
             </td>
         </tr>
