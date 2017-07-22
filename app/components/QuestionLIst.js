@@ -2,8 +2,6 @@ import React from 'react';
 import QuestionListItem from './QuestionListItem';
 
 const QuestionList = (props) => {
-    console.log("=============================== in Question List")
-    console.log(props);
   const questionListItems = props.objs.map((obj, index) => {
     return <QuestionListItem 
               key={obj._id} 

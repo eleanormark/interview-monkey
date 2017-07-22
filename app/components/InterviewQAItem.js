@@ -1,7 +1,6 @@
 import React from 'react';
 
 const InterviewQAItem= (obj) => {
-  console.log("================================== in interviewQA item")
   return (
     <div>
         <p><strong>{obj.question}</strong></p>

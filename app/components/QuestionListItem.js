@@ -1,9 +1,6 @@
 import React from 'react';
 
 const QuestionListItem = (obj) => {
-
-  console.log("================================== in question List item")
-  console.log(obj);
   return (
     <tr>
       <td>{obj.index + 1}</td>

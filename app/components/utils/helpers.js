@@ -25,9 +25,6 @@ var helper = {
   },
 
   postAnswers: function(obj) {
-    console.log("==================in helper");
-    console.log(obj.fullname);
-    alert("in helper");
     return axios.put("/api/answers", {
       questionID: obj.questionID,
       fullname: obj.fullname,
@@ -40,7 +37,6 @@ var helper = {
 
  // This function deletes new question list to our database.
   deleteSavedQuestionList: function(id) {
-      console.log(id);
       return axios.put("/api/questionList", {
           _id: id
       });

@@ -2,9 +2,6 @@ import React from 'react';
 import QuestionListItem from './QuestionListItem';
 
 const QuestionList = () => {
-    console.log("=============================== in Response List")
-
-
   return (
     <div>
       <h3 className="page-header">Interviewee Responses</h3>

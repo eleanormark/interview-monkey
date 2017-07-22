@@ -44,13 +44,10 @@ module.exports.postQuestionList= function(req, res) {
   
   newQuestionList.save(function (err) {
     if (err) return handleError(err);
-    console.log("saved new list");
   })
 }
 
 module.exports.postAnswerList = function(req, res) {
-  console.log("req.body.fullName ============================");
-  console.log(req.body);
   QuestionList.findOne({_id: req.body.questionID}, function (err, questModel) {
 
     var tmpObj = {

@@ -59,11 +59,8 @@ class InterviewQA extends React.Component {
       responseObj.answers.push({answer:ans});
     });
 
-    console.log(responseObj);
     helpers.postAnswers(responseObj).then(function (response) {
-    }.bind(this));
-    alert("==============");
-    
+    }.bind(this));    
   }
   
   handleSetFullName(event) {
@@ -143,8 +140,7 @@ class InterviewQA extends React.Component {
           
             </div>
           </div>
-           {console.log("+====++++++++++==============response data=")}
-            {console.log(this.state.responseData)}
+
             {this.state.questions.map(function(quest, i) {
               return (
                 <InterviewQAItem question={quest.question} qaID={i} key={i} />
