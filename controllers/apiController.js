@@ -1,7 +1,6 @@
 var QuestionList = require ('../models/QuestionList');
 
  module.exports.getQuestionList = function (req, res) {
-
   QuestionList.find({}).sort([
     ["date", "descending"]
   ]).exec(function(err, doc) {
@@ -15,8 +14,6 @@ var QuestionList = require ('../models/QuestionList');
 }
 
 module.exports.getQuestionsforUUID = function (req, res) {
-  console.log("controller uuid =======================")
-  console.log(req.query.uuid)
   QuestionList.find({ uuid: req.query.uuid }).sort([
     ["date", "descending"]
   ]).exec(function(err, doc) {
@@ -30,13 +27,7 @@ module.exports.getQuestionsforUUID = function (req, res) {
   });
 }
 
-
-
 module.exports.postQuestionList= function(req, res) {
-  console.log("=======================in apiController postQuestionList")
-
-  console.log(req.body.questions)
-
   var newQuestionList  = new QuestionList ({
     title: req.body.title,
     category: req.body.category,
@@ -57,8 +48,29 @@ module.exports.postQuestionList= function(req, res) {
   })
 }
 
+module.exports.postAnswerList = function(req, res) {
+  console.log("req.body.fullName ============================");
+  console.log(req.body);
+  QuestionList.findOne({_id: req.body.questionID}, function (err, questModel) {
+
+    var tmpObj = {
+      intervieweeFullName: req.body.fullname,
+      intervieweePosition: req.body.position,
+      intervieweeEmail: req.body.email,
+      answers: req.body.answers
+    }
+    questModel.responses.push(tmpObj);
+  
+    questModel.save(function (err) {
+        if(err) {
+            console.error('ERROR!');
+        }
+    });
+});
+
+}
+
 module.exports.deleteQuestionList = function(req, res) {
-    console.log(req.body);
     QuestionList.remove({ _id: req.body._id}, function(err) {
         if (!err) {
             res.send("DELETED!");

@@ -8,13 +8,12 @@ class InterviewQA extends React.Component {
         super();
   var str= "How can you traverse binary tree?"
   this.state = { 
+    title: "",
+    questions: [],
     fullname: "",
     position: "",
     email: "",
-    title: "10 Questions on Data Structures and Algorithms",
-    category: "Round One",
-    questions: [str,str,str],
-    answers: [],
+    questionID: "",
     responseData: null
   };
 
@@ -29,47 +28,44 @@ class InterviewQA extends React.Component {
     var n = str.search("/#/qa/");
     var uuid = str.slice(n+6);
 
-    // helpers.getQuestionsWithUUID(uuid).then(function(response) {
-    //   if (response !== this.state.responseData) {
-    //        this.setState({ responseData: response.data });
-    //        console.log("response +++++ +++++++++++++++++");
-    //           //  console.log(this.state.responseData[0].questions);
-    //           //  this.state.responseData[0].questions.map(function(q,i){
-    //           //     console.log(q.question)
-    //           //  });
-
-    //   }
-    // }.bind(this));
     if ( !this.state.responseData) {
-   helpers.getQuestionsWithUUID(uuid).then(function (response) {
-      this.setState({ responseData: response.data });
-   }.bind(this));
+      helpers.getQuestionsWithUUID(uuid).then(function (response) {
+        this.setState({ responseData: response.data });
+        this.setState({ questions: response.data[0].questions });
+        this.setState({ title: response.data[0].title });
+        this.setState({ questionID: response.data[0]._id});
+       }.bind(this));
 }
   }
 
-  handleSend() {
+  handleSend(event) {
     event.preventDefault();
 
-    var arr = [];
-    var responseObj = {      
+    var responseObj = {
+      questionID: this.state.questionID,      
       title: this.state.title,
       fullname: "",
       position: "",
       eamil: "",
-      responses: []
+      answers: []
     };
 
     responseObj.fullname = document.getElementById('fullname').value.trim();
     responseObj.position = document.getElementById('position').value.trim();
     responseObj.email = document.getElementById('email').value.trim();
   
-    this.state.questions.map(function(element, index) {
+    this.state.responseData[0].questions.map(function(element, index) {
       var ans = document.getElementById('textarea_'+ index).value.trim();
-      responseObj.responses.push(ans);
+      responseObj.answers.push({answer:ans});
     });
+
+    console.log(responseObj);
+    helpers.postAnswers(responseObj).then(function (response) {
+    }.bind(this));
+    alert("==============");
     
   }
-
+  
   handleSetFullName(event) {
      this.setState({ fullname: event.target.value });
   }
@@ -91,7 +87,7 @@ class InterviewQA extends React.Component {
     
     return (
       <div className="container">
-        <h2>{this.state.responseData[0].title}</h2>
+        <h2>{this.state.title}</h2>
         <hr />
         <form className="">
           <div className="row">
@@ -147,9 +143,9 @@ class InterviewQA extends React.Component {
           
             </div>
           </div>
-           {console.log("====+++==============response data=")}
+           {console.log("+====++++++++++==============response data=")}
             {console.log(this.state.responseData)}
-            {this.state.responseData[0].questions.map(function(quest, i) {
+            {this.state.questions.map(function(quest, i) {
               return (
                 <InterviewQAItem question={quest.question} qaID={i} key={i} />
               );

@@ -3,9 +3,6 @@ var axios = require("axios");
 
 // Helper functions for making API Calls
 var helper = {
-  // getQuestionList: function(uuid) {
-    
-  // },
 
   // This function hits our own server to retrieve the record of query results
   getSavedQuestionList: function() {
@@ -13,21 +10,31 @@ var helper = {
   },
 
   getQuestionsWithUUID: function(_uuid) {
-    console.log("=======helper file++++++++++++++++++++++ uuid");
-    console.log(_uuid);
-  return axios.get("/api/questionsuuid?uuid=" + _uuid);
+    return axios.get("/api/questionsuuid?uuid=" + _uuid);
   },
 
   // This function posts new question list to our database.
-  postQuestionList: function(obj) {
-      alert("in helper.js  postQuestionList =======");
-    
+  postQuestionList: function(obj) {    
     return axios.post("/api/questionList", {
       title: obj.title,
       category: obj.category,
       questions: obj.questions,
       uuid: obj.uuid,
       url: obj.url
+    });
+  },
+
+  postAnswers: function(obj) {
+    console.log("==================in helper");
+    console.log(obj.fullname);
+    alert("in helper");
+    return axios.put("/api/answers", {
+      questionID: obj.questionID,
+      fullname: obj.fullname,
+      title: obj.title,
+      position: obj.position,
+      email: obj.email,
+      answers: obj.answers
     });
   },
 

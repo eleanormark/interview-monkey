@@ -14,4 +14,6 @@ router.put("/questionList", apiController.deleteQuestionList);
 
 router.get("/questionsuuid", apiController.getQuestionsforUUID);
 
+router.put("/answers", apiController.postAnswerList);
+
 module.exports = router;

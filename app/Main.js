@@ -75,7 +75,7 @@ class Main extends React.Component {
         this.setState({modaltitle: event.target.value})
     }
 
-    handleSubmitEdit(){
+    handleSubmitEdit(event){
         event.preventDefault();
 
         var str = document.getElementById('questions-modal').value;

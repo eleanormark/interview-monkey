@@ -11,18 +11,27 @@ var QuestionSchema = new Schema({
   }
 });
 
+var AnswerSchema = new Schema({
+  answer: {
+    type: String
+  }
+});
+
 var ResponseSchema = new Schema({
   questionID: {
     type: String
   },
-  intervieweeName: {
+  intervieweeFullName: {
     type: String 
   },
   intervieweeEmail: {
     type: String 
   },
-  answer: {
+  intervieweePosition: {
     type: String
+  },
+  answers: {
+    type: [AnswerSchema]
   },
   videoURL: {
     type: String
