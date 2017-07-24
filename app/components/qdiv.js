@@ -4,7 +4,9 @@ const qdiv = (data) => {
     console.log("============== in qdiv ==============")
     console.log(data);
     return (
-        <div>#{data.index + 1}  {data.info.answer}</div>
+        <div>
+            <p><strong>#{data.index + 1}  {data.info.answer}</strong></p>
+        </div>
     )
 };
 

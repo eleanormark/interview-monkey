@@ -72,7 +72,6 @@ handleSubmit (event) {
   }.bind(this));
 
   this.props.addInfo();
-  alert(this.state.questions);
   this.setState({title:"", category:"", questions:"", uniqueLink:"", uuid:""});
   document.getElementById('questions').value = "";
 }
