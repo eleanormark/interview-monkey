@@ -116,18 +116,16 @@ class ResponseList extends React.Component {
                                     <Modal.Title>Name:  {this.state.interviewee}</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
-                                  
+                                    
+                                    <div className="container">
+                                        {this.state.answers.map(function(ans, i) {
+                                            return (
+                                                <Qdiv info={ans} index= {i} key={i + "z"} />
+                                            );
+                                        }.bind(this))}
+                                    </div> 
 
                                 </Modal.Body>
-                                <div className="container">
-                                    
-                                    {this.state.answers.map(function(ans, i) {
-                                        return (
-                                            <Qdiv info={ans} index= {i} key={i + "z"} />
-                                         );
-                                    }.bind(this))}
-                                </div>
-                                <div>...</div>
                                 <Modal.Footer>
                                 <Button onClick={this.closeViewAnsModal}>Close</Button>
                                 <Button bsStyle="info"
