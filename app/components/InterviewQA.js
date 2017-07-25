@@ -1,5 +1,5 @@
 import React from 'react';
-import InterviewQAItem from './InterviewQAItem';
+import Editor from './Editor';
 import helpers from "./utils/helpers";
 
 class InterviewQA extends React.Component {
@@ -14,7 +14,7 @@ class InterviewQA extends React.Component {
     position: "",
     email: "",
     questionID: "",
-    responseData: null
+    responseData: null,
   };
 
   this.handleSend = this.handleSend.bind(this);
@@ -55,10 +55,11 @@ class InterviewQA extends React.Component {
     responseObj.email = document.getElementById('email').value.trim();
   
     this.state.responseData[0].questions.map(function(element, index) {
-      var ans = document.getElementById('textarea_'+ index).value.trim();
-      responseObj.answers.push({answer:ans});
+      var ans = document.getElementById('snippet_id_'+ index).getElementsByClassName('ace_text-layer');
+         console.log("===============",ans[0].innerHTML);
+      responseObj.answers.push({answer:ans[0].innerHTML});
     });
-
+ 
     helpers.postAnswers(responseObj).then(function (response) {
     }.bind(this));    
   }
@@ -84,6 +85,7 @@ class InterviewQA extends React.Component {
     
     return (
       <div className="container">
+
         <h2>{this.state.title}</h2>
         <hr />
         <form className="">
@@ -142,11 +144,20 @@ class InterviewQA extends React.Component {
           </div>
 
             {this.state.questions.map(function(quest, i) {
+
               return (
-                <InterviewQAItem question={quest.question} qaID={i} key={i} />
+                <div key={i}>
+                    <p>&nbsp;</p>
+                    <strong>{quest.question}</strong>
+                    <p>&nbsp;</p>
+                    <Editor index={i}/>
+                </div>
               );
+
             }.bind(this))}
-         
+
+             <p>&nbsp;</p>
+
             <button onClick={this.handleSend}
               className="btn btn-default"
               type="submit"
