@@ -4,20 +4,14 @@ import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
 import 'brace/theme/chrome';
 
-
 export class Editor extends React.Component {
   constructor(props) {
     super(props);
-      this.state = { 
-    
-    value: "",
-  };
-
-   this.onChange = this.onChange.bind(this);
-
+    this.state = { value: "" };
+    this.onChange = this.onChange.bind(this);
   }
-    onChange(newValue, e) {
-    console.log(newValue);
+
+  onChange(newValue, e) {
     this.setState({value: newValue})
   }
   render() {

@@ -5,13 +5,18 @@ import 'brace/mode/javascript';
 import 'brace/theme/chrome';
 
 const Answer = (data) => {
-    console.log("============== in qdiv ==============")
-    console.log(data.info.answer);
     
     return (
-        <pre>
-             <div dangerouslySetInnerHTML={{__html: data.info.answer}} />
-        </pre>
+        <AceEditor
+            mode="javascript"
+            theme="chrome"
+            value= {data.info.answer}
+            name={"snippet_id_" + data.index}
+            editorProps={{$blockScrolling: true}}
+            width = '100%'
+            height = '200px'
+        />
+            
     )
 };
 

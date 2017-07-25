@@ -56,8 +56,7 @@ class InterviewQA extends React.Component {
   
     this.state.responseData[0].questions.map(function(element, index) {
       var ans = document.getElementById('snippet_id_'+ index).getElementsByClassName('ace_text-layer');
-         console.log("===============",ans[0].innerHTML);
-      responseObj.answers.push({answer:ans[0].innerHTML});
+      responseObj.answers.push({answer:ans[0].innerText});
     });
  
     helpers.postAnswers(responseObj).then(function (response) {
