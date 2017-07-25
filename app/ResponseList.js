@@ -116,7 +116,7 @@ class ResponseList extends React.Component {
                                     <Modal.Title>Name:  {this.state.interviewee}</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
-                                    
+
                                     <div className="container">
                                         {this.state.answers.map(function(ans, i) {
                                             return (
