@@ -1,6 +1,6 @@
 import React from 'react';
 import NavbarInstance from './components/NavbarInstance.js';
-import Qdiv from './components/qdiv.js';
+import Answer from './components/Answer.js';
 import ResponseListItem from './components/ResponseListItem';
 import helpers from "./components/utils/helpers";
 import { Modal, Button } from 'react-bootstrap';
@@ -120,7 +120,7 @@ class ResponseList extends React.Component {
                                     <div className="container">
                                         {this.state.answers.map(function(ans, i) {
                                             return (
-                                                <Qdiv info={ans} index= {i} key={i + "z"} />
+                                                <Answer info={ans} index= {i} key={i + "z"} />
                                             );
                                         }.bind(this))}
                                     </div> 

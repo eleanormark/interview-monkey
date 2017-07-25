@@ -4,20 +4,15 @@ import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
 import 'brace/theme/chrome';
 
-
-const   convertStrToHTML =(str) => {
-
-  }
-
-const qdiv = (data) => {
+const Answer = (data) => {
     console.log("============== in qdiv ==============")
     console.log(data.info.answer);
     
     return (
-        <div>
+        <pre>
              <div dangerouslySetInnerHTML={{__html: data.info.answer}} />
-        </div>
+        </pre>
     )
 };
 
-export default qdiv;
+export default Answer;
