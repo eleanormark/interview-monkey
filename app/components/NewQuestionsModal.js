@@ -79,12 +79,13 @@ handleSubmit (event) {
 render() {
   return(
     <div>
-      <Button onClick={this.open} type="button" bsSize="small"  bsStyle="info">
-          <span className="glyphicon glyphicon-plus"></span>
-                &nbsp;New Question List
+      <Button onClick={this.open} className="btn-outline" type="button" bsSize="small"  bsStyle="info">
+        <span className="glyphicon glyphicon-plus"></span>
+        &nbsp;New Question List
       </Button>
       <div>
         <Modal className="modal-container" 
+          bsSize="large"
           show={this.state.showModal} 
           onHide={this.close}
           animation={true}>
@@ -147,9 +148,7 @@ render() {
 
             <Modal.Footer>
               <Button onClick={this.close}>Close</Button>
-              <Button onClick={this.handleSubmit} bsStyle="info"
-                type="submit"
-                >
+              <Button onClick={this.handleSubmit} className="btn-outline"  bsStyle="info" type="submit">
                 Create New List
               </Button>
             </Modal.Footer>   

@@ -72,8 +72,9 @@ class ResponseList extends React.Component {
                 <div>
                     <NavbarInstance />
                     <div className="container">
-                        <h3 className="page-header">Responses</h3>
-                        <table className="table" id="response-list-table">
+                        <div className="container2">
+                        <div className="table-top font-23">Responses</div>
+                        <table className="table table-hover" id="response-list-table">
                             <thead>
                             <tr>
                                 <th>Name</th>
@@ -106,8 +107,10 @@ class ResponseList extends React.Component {
                                 
                             </tbody>
                         </table>
+                        </div>
                         <div>
                             <Modal className="modal-container" 
+                                bsSize="large"
                                 show={this.state.showViewAnsModal} 
                                 onHide={this.closeViewAnsModal}
                                 animation={true}>
@@ -117,7 +120,7 @@ class ResponseList extends React.Component {
                                 </Modal.Header>
                                 <Modal.Body>
 
-                                    <div className="container">
+                                    <div>
                                         {this.state.answers.map(function(ans, i) {
                                             return (
                                                 <Answer info={ans} index= {i} key={i + "z"} />
@@ -128,9 +131,7 @@ class ResponseList extends React.Component {
                                 </Modal.Body>
                                 <Modal.Footer>
                                 <Button onClick={this.closeViewAnsModal}>Close</Button>
-                                <Button bsStyle="info"
-                                    type="submit"
-                                    >
+                                <Button bsStyle="info" type="submit" className="btn-outline">
                                     Save 
                                 </Button>
                                 </Modal.Footer>   

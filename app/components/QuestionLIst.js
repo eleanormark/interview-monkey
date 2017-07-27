@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionListItem from './QuestionListItem';
+import { Modal, Button } from 'react-bootstrap';
 
 const QuestionList = (props) => {
   
@@ -17,8 +18,8 @@ const QuestionList = (props) => {
 
   return (
     <div>
-      <h3 className="page-header">Interview Question Lists</h3>
-      <table className="table" id="question-list-table">
+      <div className="table-top font-23"> Interview Question Lists</div>
+      <table className="table table-hover" id="question-list-table">
         <thead>
           <tr>
             <th>#</th>

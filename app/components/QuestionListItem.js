@@ -10,12 +10,12 @@ const QuestionListItem = (obj) => {
       <td>{obj.info.date.substring(0,10)}</td>
       <td>{obj.info.url}</td>
       <td>
-        <button onClick={() => obj.onDeleteList(obj.info._id)} type="button" className="btn btn-info btn-sm">
+        <button onClick={() => obj.onDeleteList(obj.info._id)} type="button" className="btn btn-info btn-sm btn-outline">
           <span className="glyphicon glyphicon-trash"></span>
         </button>
       </td>
       <td>
-        <button onClick={() => obj.onEditList(obj.info)} type="button" className="btn btn-info btn-sm">
+        <button onClick={() => obj.onEditList(obj.info)} type="button" className="btn btn-info btn-sm btn-outline">
           <span className="glyphicon glyphicon-pencil"></span>
         </button>
       </td>

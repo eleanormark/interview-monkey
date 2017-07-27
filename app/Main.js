@@ -3,19 +3,14 @@ import NewQuestionsModal from './components/NewQuestionsModal';
 import QuestionList from './components/QuestionList';
 import NavbarInstance from './components/NavbarInstance';
 import helpers from "./components/utils/helpers";
-import RecordRTC from 'recordrtc';
 import { Modal, Button } from 'react-bootstrap';
 const uuidv4 = require('uuid/v4');
-
-const hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-                        navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
 class Main extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            src: null,
             showEditModal: false,
             title: "",
             category: "",
@@ -50,7 +45,7 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-    this.getSavedInterveiwQuestionList();
+        this.getSavedInterveiwQuestionList();
     }
 
     getSavedInterveiwQuestionList() {
@@ -131,14 +126,17 @@ class Main extends React.Component {
                 <NavbarInstance />
                 <div className="container">
                     <NewQuestionsModal addInfo={this.addInfo} />
+                    <div className="container2">
                     <QuestionList 
                         objs={this.state.savedQuestionList} 
                         onListDelete={this.deleteList}
                         onListEdit={this.editList}
                     />
+                    </div>
 
                     <div>
                         <Modal className="modal-container" 
+                            bsSize="large"
                             show={this.state.showEditModal} 
                             onHide={this.closeEditModal}
                             animation={true}>
@@ -200,9 +198,7 @@ class Main extends React.Component {
 
                             <Modal.Footer>
                             <Button onClick={this.closeEditModal}>Close</Button>
-                            <Button onClick={this.handleSubmitEdit} bsStyle="info"
-                                type="submit"
-                                >
+                            <Button onClick={this.handleSubmitEdit} bsStyle="info" className="btn-outline" type="submit">
                                 Save 
                             </Button>
                             </Modal.Footer>   
