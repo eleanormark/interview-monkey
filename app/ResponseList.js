@@ -17,7 +17,7 @@ class ResponseList extends React.Component {
             position: "",
             qaList:"",
             cat:"",
-            date:"",
+            repliedDate:"",
             questions:[],
             answers: []
         };
@@ -51,7 +51,7 @@ class ResponseList extends React.Component {
         this.setState({interviewee: res2.intervieweeFullName});
         this.setState({position: res2.intervieweePosition});
         this.setState({answers: res2.answers});
-        this.setState({date: res2.date.substring(0,10)});
+        this.setState({repliedDate: res2.date.substring(0,10)});
         this.setState({qaList: res1.title});
         this.setState({cat: res1.category});
         this.setState({questions: res1.questions});
@@ -119,11 +119,18 @@ class ResponseList extends React.Component {
                                     <Modal.Title>Name:  {this.state.interviewee}</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
-
                                     <div>
+                                        <div>Position:  {this.state.position}</div>
+                                        <div>Replied Date: {this.state.repliedDate}</div>
+                                        <div>Question List: {this.state.qaList}</div>
+                                        <br />
                                         {this.state.answers.map(function(ans, i) {
                                             return (
-                                                <Answer info={ans} index= {i} key={i + "z"} />
+                                                <div>
+                                                   <p><strong>{this.state.questions[i].question}</strong></p>
+                                                    <Answer info={ans} index= {i} key={i + "z"} />
+                                                    <br />
+                                                </div>
                                             );
                                         }.bind(this))}
                                     </div> 
