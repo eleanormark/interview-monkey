@@ -29,7 +29,7 @@ const QuestionList = (props) => {
             <th>Date</th>
             <th>Unique Link</th>
             <th>Delete</th>
-            <th>View Edit</th>
+            <th>View/Edit</th>
           </tr>
         </thead>
         <tbody>
