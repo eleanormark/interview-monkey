@@ -133,6 +133,35 @@ class ResponseList extends React.Component {
                                                 </div>
                                             );
                                         }.bind(this))}
+
+                                        <div className="form-group">
+                                            <label htmlFor="input-category" className="">
+                                                Status:
+                                            </label>
+
+                                            <input
+                                            value={this.state.status}
+                                            type="text"
+                                            className="form-control"
+                                            onChange={this.handleSetStatus}
+                                            required
+                                            name="input-status"
+                                            />
+                                        </div>
+
+                                        <div className="form-group">
+                                            <textarea rows="6"
+                                            value={this.state.comment}
+                                            type="text"
+                                            className="form-control"
+                                            onChange={this.handleSetComment}
+                                            required
+                                            name="input-comment"
+                                            placeholder="Enter comments."
+                                            > 
+                                        </textarea>
+                                        </div>
+
                                     </div> 
 
                                 </Modal.Body>

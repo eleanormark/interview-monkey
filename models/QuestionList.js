@@ -14,6 +14,12 @@ var QuestionSchema = new Schema({
 var AnswerSchema = new Schema({
   answer: {
     type: String
+  },
+  status: {
+    type: String
+  },
+  comment: {
+    type: String
   }
 });
 
