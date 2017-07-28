@@ -16,4 +16,6 @@ router.get("/questionsuuid", apiController.getQuestionsforUUID);
 
 router.put("/answers", apiController.postAnswerList);
 
+router.put("/comments", apiController.postResponseCommet);
+
 module.exports = router;

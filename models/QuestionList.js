@@ -14,12 +14,6 @@ var QuestionSchema = new Schema({
 var AnswerSchema = new Schema({
   answer: {
     type: String
-  },
-  status: {
-    type: String
-  },
-  comment: {
-    type: String
   }
 });
 
@@ -45,7 +39,10 @@ var ResponseSchema = new Schema({
   answerRating: {
     type: Number
   },
-  interviewerComment: {
+  status: {
+    type: String
+  },
+  comment: {
     type: String
   },
   date: {

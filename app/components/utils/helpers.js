@@ -35,6 +35,15 @@ var helper = {
     });
   },
 
+  postResponseComments: function(obj) {
+    return axios.put("/api/comments", {
+      status: obj.status,
+      comment: obj.comment,
+      res_id: obj.res_id,
+      qList_id: obj.qList_id
+    });
+  },
+
  // This function deletes new question list to our database.
   deleteSavedQuestionList: function(id) {
       return axios.put("/api/questionList", {

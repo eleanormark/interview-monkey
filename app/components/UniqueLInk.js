@@ -19,8 +19,6 @@ class UniqueLink extends React.Component {
               <span className="glyphicon glyphicon-copy"></span>
           </Button>
         </CopyToClipboard>
- 
-        {this.state.copied ? <span style={{color: '#5bc0de'}}>&nbsp;&nbsp;Copied.</span> : null}
       </div>
     );
   }

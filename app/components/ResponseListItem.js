@@ -10,6 +10,7 @@ const ResponseListItem = (data) => {
             <td>{data.res1.title}</td>
             <td>{data.res1.category}</td>
             <td>{data.res2.date.substring(0,10)}</td>
+            <td>{data.res2.status}</td>
             <td>
                 <button type="button" className="btn btn-info btn-outline btn-sm">
                 <span className="glyphicon glyphicon-trash"></span>

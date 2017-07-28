@@ -15,6 +15,8 @@ const Answer = (data) => {
             editorProps={{$blockScrolling: true}}
             width = '100%'
             height = '200px'
+            readOnly = {true}
+            highlightActiveLine= {false}
         />
             
     )

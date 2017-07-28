@@ -63,8 +63,24 @@ module.exports.postAnswerList = function(req, res) {
             console.error('ERROR!');
         }
     });
-});
+  });
 
+}
+
+module.exports.postResponseCommet = function(req, res) {
+
+    QuestionList.update({'responses._id': req.body.res_id},
+      {'$set': {
+             'responses.$.status': req.body.status,
+             'responses.$.comment':req.body.comment,
+	   }},
+        function(err,model) {
+          if(err){
+              console.log(err);
+              return res.send(err);
+            }
+            return res.json(model);
+        });
 }
 
 module.exports.deleteQuestionList = function(req, res) {

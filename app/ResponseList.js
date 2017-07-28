@@ -14,17 +14,28 @@ class ResponseList extends React.Component {
             showViewAnsModal: false,
             qaResponseData: null,
             interviewee:"",
+            email: "",
             position: "",
             qaList:"",
             cat:"",
             repliedDate:"",
             questions:[],
-            answers: []
+            answers: [],
+            status: "",
+            comment: "",
+            questionList_id: "",
+            response_id: "",
+            comment: "",
+            status:""
         };
 
         this.onViewAns = this.onViewAns.bind(this);
         this.openViewAnsModal = this.openViewAnsModal.bind(this);
         this.closeViewAnsModal = this.closeViewAnsModal.bind(this);
+        this.handleSetStatus = this.handleSetStatus.bind(this);
+        this.handleSetComment = this.handleSetComment.bind(this);
+        this.handleSave = this.handleSave.bind(this);
+        this.getSavedInterveiwQuestionList = this.getSavedInterveiwQuestionList.bind(this);
     }
     openViewAnsModal() {
     this.setState({showViewAnsModal: true});
@@ -42,21 +53,51 @@ class ResponseList extends React.Component {
         if ( !this.state.qaResponseData) {
             helpers.getSavedQuestionList().then(function(response) {
                 this.setState({ qaResponseData: response.data });
-                console.log(this.state.qaResponseData);
             }.bind(this));
         }
     }
    
     onViewAns(res1, res2) {
         this.setState({interviewee: res2.intervieweeFullName});
+        this.setState({email: res2.intervieweeEmail})
         this.setState({position: res2.intervieweePosition});
         this.setState({answers: res2.answers});
         this.setState({repliedDate: res2.date.substring(0,10)});
         this.setState({qaList: res1.title});
         this.setState({cat: res1.category});
         this.setState({questions: res1.questions});
+        this.setState({questionList_id: res1._id});
+        this.setState({response_id: res2._id});
+        this.setState({status: res2.status});
+        this.setState({comment: res2.comment});
         
         this.openViewAnsModal();
+    }
+
+    handleSetStatus(event) {
+        this.setState({ status: event.target.value });
+    }
+
+    handleSetComment(event) {
+        this.setState({ comment: event.target.value });
+    }
+
+    handleSave(event) {
+        event.preventDefault();
+
+        var obj = {      
+            comment: this.state.comment,
+            status: this.state.status,
+            res_id: this.state.response_id,
+            qList_id: this.state.questionList_id
+        };
+
+        helpers.postResponseComments(obj).then(function(response0) {
+            helpers.getSavedQuestionList().then(function(response) {
+                this.setState({ qaResponseData: response.data });
+            }.bind(this));
+        
+        }.bind(this));
     }
 
     render() {
@@ -79,10 +120,11 @@ class ResponseList extends React.Component {
                             <tr>
                                 <th>Name</th>
                                 <th>Position</th>
-                                <th>Question List</th>
-                                <th>Category</th>
+                                <th>Quest List</th>
+                                <th>Quest Cat</th>
                                 <th>Replied Date</th>
-                                <th>Delete</th>
+                                <th>Status</th>
+                                <th>Remove</th>
                                 <th>View</th>
                             </tr>
                             </thead>
@@ -121,6 +163,7 @@ class ResponseList extends React.Component {
                                 <Modal.Body>
                                     <div>
                                         <div>Position:  {this.state.position}</div>
+                                        <div>Email: {this.state.email}</div>
                                         <div>Replied Date: {this.state.repliedDate}</div>
                                         <div>Question List: {this.state.qaList}</div>
                                         <br />
@@ -141,6 +184,7 @@ class ResponseList extends React.Component {
 
                                             <input
                                             value={this.state.status}
+                                            id = "modal-status"
                                             type="text"
                                             className="form-control"
                                             onChange={this.handleSetStatus}
@@ -152,6 +196,7 @@ class ResponseList extends React.Component {
                                         <div className="form-group">
                                             <textarea rows="6"
                                             value={this.state.comment}
+                                            id = "modal-comment"
                                             type="text"
                                             className="form-control"
                                             onChange={this.handleSetComment}
@@ -167,7 +212,7 @@ class ResponseList extends React.Component {
                                 </Modal.Body>
                                 <Modal.Footer>
                                 <Button onClick={this.closeViewAnsModal}>Close</Button>
-                                <Button bsStyle="info" type="submit" className="btn-outline">
+                                <Button onClick={this.handleSave} bsStyle="info" type="submit" className="btn-outline">
                                     Save 
                                 </Button>
                                 </Modal.Footer>   
