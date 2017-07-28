@@ -44,6 +44,14 @@ var helper = {
     });
   },
 
+   // This function deletes new question list to our database.
+  deleteResponse: function(obj) {
+      return axios.put("/api/response", {
+          quest_id: obj.quest_id,
+          resp_id: obj.resp_id
+      });
+  },
+
  // This function deletes new question list to our database.
   deleteSavedQuestionList: function(id) {
       return axios.put("/api/questionList", {

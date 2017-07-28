@@ -16,7 +16,7 @@ const NavbarInstance = () => {
       <Nav>
         <NavItem eventKey={1} href="#"><Link to={'/'}>Question Lists</Link></NavItem>
         <NavItem eventKey={2} href="#"><Link to={'/responseList'}>Responses</Link></NavItem>
-        <li><a href="http://localhost:8000/#/qa/1be5f1a5-bcfe-4978-a6c3-6def7277eab4" target="_blank" >Practice Questions</a></li>
+        <li><a href="http://localhost:8000/#/qa/64687a31-5bb6-4336-8ed4-970150671c02" target="_blank" >Practice Questions</a></li>
       </Nav>
       <Nav pullRight>
         <NavItem eventKey={1} href="#"><Link to={'/login'}>Login</Link></NavItem>

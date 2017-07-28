@@ -18,4 +18,6 @@ router.put("/answers", apiController.postAnswerList);
 
 router.put("/comments", apiController.postResponseCommet);
 
+router.put("/response", apiController.deleteResponse);
+
 module.exports = router;

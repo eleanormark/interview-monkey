@@ -83,6 +83,19 @@ module.exports.postResponseCommet = function(req, res) {
         });
 }
 
+module.exports.deleteResponse = function(req, res) {
+    QuestionList.findByIdAndUpdate(
+    req.body.quest_id,
+   { $pull: { 'responses': {  _id: req.body.resp_id } } },function(err,model){
+      if(err){
+       	console.log(err);
+       	return res.send(err);
+        }
+        return res.json(model);
+    });
+
+}
+
 module.exports.deleteQuestionList = function(req, res) {
     QuestionList.remove({ _id: req.body._id}, function(err) {
         if (!err) {

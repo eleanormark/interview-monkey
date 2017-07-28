@@ -12,7 +12,7 @@ const ResponseListItem = (data) => {
             <td>{data.res2.date.substring(0,10)}</td>
             <td>{data.res2.status}</td>
             <td>
-                <button type="button" className="btn btn-info btn-outline btn-sm">
+                <button onClick={() => data.onRemoveResponse(data.res1._id, data.res2._id)}type="button" className="btn btn-info btn-outline btn-sm">
                 <span className="glyphicon glyphicon-trash"></span>
                 </button>
             </td>

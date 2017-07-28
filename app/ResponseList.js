@@ -74,6 +74,21 @@ class ResponseList extends React.Component {
         this.openViewAnsModal();
     }
 
+    onRemoveRes(quest_id, resp_id) {
+        var obj = {      
+            quest_id: quest_id,
+            resp_id: resp_id
+        };
+
+        helpers.deleteResponse(obj).then(function(response0) {
+        }.bind(this));
+
+        // helpers.getSavedQuestionList().then(function(response) {
+        //     console.log(this);
+        //         this3.setState({ qaResponseData: response.data });
+        //     }.bind(this3));
+    }
+
     handleSetStatus(event) {
         this.setState({ status: event.target.value });
     }
@@ -139,6 +154,7 @@ class ResponseList extends React.Component {
                                                 res1={res1} 
                                                 res2={res2} 
                                                 onViewAnswers={ that.onViewAns } 
+                                                onRemoveResponse = {that.onRemoveRes}
                                                 key={j+"res2"}
                                             />
                                          )
