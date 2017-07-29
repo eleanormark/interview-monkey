@@ -99,6 +99,12 @@ table {
 .btn-danger.btn-outline:hover {
     color: #fff;
 }
+.new-question-list-btn {
+    float: right;
+    position: relative;
+    top: 40px;
+    right: 40px;
+    }
 
 @media (min-width: 768px) and (max-width: 991px) {
     .navbar-collapse.collapse {
@@ -112,5 +118,15 @@ table {
     }
     .navbar-header {
         float:none;
+    }
+
+}
+
+@media (min-width: 0px) and (max-width: 500px) {
+    .new-question-list-btn {
+    float: none;
+    position: relative;
+    top: 0;
+    right: 0;
     }
 }

@@ -79,7 +79,7 @@ handleSubmit (event) {
 render() {
   return(
     <div>
-      <Button onClick={this.open} className="btn-outline" type="button" bsSize="small"  bsStyle="info">
+      <Button onClick={this.open} className="btn-outline new-question-list-btn" type="button" bsSize="small"  bsStyle="info">
         <span className="glyphicon glyphicon-plus"></span>
         &nbsp;New Question List
       </Button>

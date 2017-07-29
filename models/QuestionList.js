@@ -18,9 +18,6 @@ var AnswerSchema = new Schema({
 });
 
 var ResponseSchema = new Schema({
-  questionID: {
-    type: String
-  },
   intervieweeFullName: {
     type: String 
   },
@@ -35,9 +32,6 @@ var ResponseSchema = new Schema({
   },
   videoURL: {
     type: String
-  },
-  answerRating: {
-    type: Number
   },
   status: {
     type: String
