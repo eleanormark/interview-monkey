@@ -30,6 +30,7 @@ class ResponseList extends React.Component {
         };
 
         this.onViewAns = this.onViewAns.bind(this);
+        this.onRemoveRes = this.onRemoveRes.bind(this);
         this.openViewAnsModal = this.openViewAnsModal.bind(this);
         this.closeViewAnsModal = this.closeViewAnsModal.bind(this);
         this.handleSetStatus = this.handleSetStatus.bind(this);
@@ -81,12 +82,10 @@ class ResponseList extends React.Component {
         };
 
         helpers.deleteResponse(obj).then(function(response0) {
+            helpers.getSavedQuestionList().then(function(response) {
+                this.setState({ qaResponseData: response.data }).bind(this);
+            }.bind(this));
         }.bind(this));
-
-        // helpers.getSavedQuestionList().then(function(response) {
-        //     console.log(this);
-        //         this3.setState({ qaResponseData: response.data });
-        //     }.bind(this3));
     }
 
     handleSetStatus(event) {
@@ -109,7 +108,7 @@ class ResponseList extends React.Component {
 
         helpers.postResponseComments(obj).then(function(response0) {
             helpers.getSavedQuestionList().then(function(response) {
-                this.setState({ qaResponseData: response.data });
+                this.setState({ qaResponseData: response.data }); 
             }.bind(this));
         
         }.bind(this));
