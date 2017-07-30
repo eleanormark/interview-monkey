@@ -108,6 +108,13 @@ module.exports.deleteResponse = function(req, res) {
         }
         return res.json(model);
   });
+
+  //Delete current list if response array lenght is 0 and is_visible condition is false.
+  QuestionList.findOne({
+    _id: req.body._id,
+    'isVisibleQuestionListPage': false,
+    "responses.0": { "$exists": false }
+  }).remove().exec();
 }
 
 module.exports.deleteQuestionList = function(req, res) {
