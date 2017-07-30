@@ -63,13 +63,14 @@ module.exports.postQuestionList= function(req, res) {
 module.exports.postAnswerList = function(req, res) {
 
   QuestionList.findOne({_id: req.body.questionID}, function (err, questModel) {
-    
+
     var tmpObj = {
       intervieweeFullName: req.body.fullname,
       intervieweePosition: req.body.position,
       intervieweeEmail: req.body.email,
       answers: req.body.answers
     }
+
     questModel.responses.push(tmpObj);
   
     questModel.save(function (err) {
@@ -105,16 +106,15 @@ module.exports.deleteResponse = function(req, res) {
       if(err){
         console.log(err);
         return res.send(err);
-        }
-        return res.json(model);
+        } 
+      //Delete current list if response array lenght is 0 and is_visible condition is false.
+      QuestionList.findOne({
+        _id: req.body._id,
+        'isVisibleQuestionListPage': false,
+        "responses.0": { "$exists": false }
+      }).remove().exec();
+      return res.json(model);
   });
-
-  //Delete current list if response array lenght is 0 and is_visible condition is false.
-  QuestionList.findOne({
-    _id: req.body._id,
-    'isVisibleQuestionListPage': false,
-    "responses.0": { "$exists": false }
-  }).remove().exec();
 }
 
 module.exports.deleteQuestionList = function(req, res) {
@@ -126,13 +126,15 @@ module.exports.deleteQuestionList = function(req, res) {
         if (!err) {
             res.send("SUCCESS!");
             console.log("update is Visible for question list _id", req.body._id);
+           
+            //Delete current list if response array lenght is 0.
+            QuestionList.findOne({
+              _id: req.body._id,
+              "responses.0": { "$exists": false }
+            }).remove().exec();
+
         } else {
             console.log(err);
         }
-    });
-    //Delete current list if response array lenght is 0.
-    QuestionList.findOne({
-      _id: req.body._id,
-      "responses.0": { "$exists": false }
-    }).remove().exec();
+    })
 }
