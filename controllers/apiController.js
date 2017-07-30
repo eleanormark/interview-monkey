@@ -123,6 +123,9 @@ module.exports.deleteQuestionList = function(req, res) {
             console.log(err);
         }
     });
-
-
+    //Delete current list if response array lenght is 0.
+    QuestionList.findOne({
+      _id: req.body._id,
+      "responses.0": { "$exists": false }
+    }).remove().exec();
 }
