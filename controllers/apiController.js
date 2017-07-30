@@ -109,7 +109,7 @@ module.exports.deleteResponse = function(req, res) {
         } 
       //Delete current list if response array lenght is 0 and is_visible condition is false.
       QuestionList.findOne({
-        _id: req.body._id,
+        _id: req.body.quest_id,
         'isVisibleQuestionListPage': false,
         "responses.0": { "$exists": false }
       }).remove().exec();
