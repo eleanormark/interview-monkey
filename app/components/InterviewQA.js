@@ -55,8 +55,8 @@ class InterviewQA extends React.Component {
     responseObj.email = document.getElementById('email').value.trim();
   
     this.state.responseData[0].questions.map(function(element, index) {
-      var ans = document.getElementById('snippet_id_'+ index).getElementsByClassName('ace_text-layer');
-      responseObj.answers.push({answer:ans[0].innerText});
+      var ans = document.getElementById('id_answer_'+ index).getAttribute('data-snippet');
+      responseObj.answers.push({answer:ans});
     });
  
     helpers.postAnswers(responseObj).then(function (response) {

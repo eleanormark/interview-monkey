@@ -13,19 +13,24 @@ export class Editor extends React.Component {
 
   onChange(newValue, e) {
     this.setState({value: newValue})
+    var editor = this.refs.ace.editor
   }
   render() {
     return (
-      <AceEditor
-        mode="javascript"
-        theme="chrome"
-        value= {this.state.value}
-        onChange={this.onChange}
-        name={"snippet_id_" + this.props.index }
-        editorProps={{$blockScrolling: true}}
-        width = '100%'
-        height = '200px'
-      />
+      <div>
+        <AceEditor
+          mode="javascript"
+          theme="chrome"
+          ref="ace"
+          value= {this.state.value}
+          onChange={this.onChange}
+          name={"snippet_id_" + this.props.index }
+          editorProps={{$blockScrolling: true}}
+          width = '100%'
+          height = '200px'
+        />
+        <div id={"id_answer_"+ this.props.index} data-snippet = {this.state.value} ></div>
+      </div>
     );
   }
 }
