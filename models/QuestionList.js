@@ -30,9 +30,6 @@ var ResponseSchema = new Schema({
   answers: {
     type: [AnswerSchema]
   },
-  videoURL: {
-    type: String
-  },
   status: {
     type: String
   },
@@ -46,9 +43,6 @@ var ResponseSchema = new Schema({
 });
 
 var QuestionListSchema = new Schema({
-  authorEmail: {
-   type: String
- },
   title: {
     type: String
   },
@@ -66,6 +60,10 @@ var QuestionListSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  }, 
+  isVisibleQuestionListPage: {
+    type: Boolean,
+    default: true
   }
 });
 

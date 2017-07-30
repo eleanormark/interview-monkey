@@ -11,6 +11,7 @@
   background-repeat:no-repeat;
   background-size:cover;
 }
+
 .ace_editor {
     border: solid #ebebeb 1px;
 }
@@ -19,14 +20,10 @@
     background-color: transparent;
 }
 
-video {
-    max-width: 100%;
-    vertical-align: bottom;
-}
-
 a {
     text-decoration: none !important;
 }
+
 .navbar-default .navbar-nav>li>a,  a {
     color: #666666;
 }

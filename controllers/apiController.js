@@ -13,6 +13,19 @@ var QuestionList = require ('../models/QuestionList');
   });
 }
 
+ module.exports.getVisibleQuestionList = function (req, res) {
+  QuestionList.find({'isVisibleQuestionListPage': true}).sort([
+    ["date", "descending"]
+  ]).exec(function(err, doc) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.send(doc);
+    }
+  });
+}
+
 module.exports.getQuestionsforUUID = function (req, res) {
   QuestionList.find({ uuid: req.query.uuid }).sort([
     ["date", "descending"]
@@ -48,8 +61,9 @@ module.exports.postQuestionList= function(req, res) {
 }
 
 module.exports.postAnswerList = function(req, res) {
-  QuestionList.findOne({_id: req.body.questionID}, function (err, questModel) {
 
+  QuestionList.findOne({_id: req.body.questionID}, function (err, questModel) {
+    
     var tmpObj = {
       intervieweeFullName: req.body.fullname,
       intervieweePosition: req.body.position,
@@ -74,34 +88,41 @@ module.exports.postResponseCommet = function(req, res) {
              'responses.$.status': req.body.status,
              'responses.$.comment':req.body.comment,
 	   }},
-        function(err,model) {
+       function(err,model) {
           if(err){
               console.log(err);
               return res.send(err);
             }
             return res.json(model);
-        });
+    });
 }
 
 module.exports.deleteResponse = function(req, res) {
-    QuestionList.findByIdAndUpdate(
+  QuestionList.findByIdAndUpdate(
     req.body.quest_id,
-   { $pull: { 'responses': {  _id: req.body.resp_id } } },function(err,model){
+    { $pull: { 'responses': {  _id: req.body.resp_id } } },
+    function(err,model) {
       if(err){
-       	console.log(err);
-       	return res.send(err);
+        console.log(err);
+        return res.send(err);
         }
         return res.json(model);
-    });
-
+  });
 }
 
 module.exports.deleteQuestionList = function(req, res) {
-    QuestionList.remove({ _id: req.body._id}, function(err) {
+
+    QuestionList.update(
+      { _id: req.body._id },
+      { '$set': {'isVisibleQuestionListPage': false }}, 
+       function(err) {
         if (!err) {
-            res.send("DELETED!");
+            res.send("SUCCESS!");
+            console.log("update is Visible for question list _id", req.body._id);
         } else {
             console.log(err);
         }
     });
+
+
 }

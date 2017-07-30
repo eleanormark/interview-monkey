@@ -6,6 +6,8 @@ var apiController = require('../controllers/apiController');
 // We will call this route the moment our page gets rendered
 router.get("/questionList", apiController.getQuestionList);
 
+router.get("/visibleQuestionList", apiController.getVisibleQuestionList);
+
 // This is the route we will send POST requests to save each list of questions.
 router.post("/questionList", apiController.postQuestionList);
 

@@ -45,11 +45,11 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        this.getSavedInterveiwQuestionList();
+        this.getVisibleSavedInterveiwQuestionList();
     }
 
-    getSavedInterveiwQuestionList() {
-        helpers.getSavedQuestionList().then(function(response) {
+    getVisibleSavedInterveiwQuestionList() {
+        helpers.getVisibleSavedQuestionList().then(function(response) {
             if (response !== this.state.savedQuestionList) {
                 this.setState({ savedQuestionList: response.data });
             }
@@ -58,7 +58,7 @@ class Main extends React.Component {
 
     deleteList(id) {
         helpers.deleteSavedQuestionList(id).then(function(response){
-            this.getSavedInterveiwQuestionList();
+            this.getVisibleSavedInterveiwQuestionList();
         }.bind(this))
     }
 
@@ -89,7 +89,7 @@ class Main extends React.Component {
     }.bind(this));
 
     helpers.deleteSavedQuestionList(this.state.modul_id).then(function(res){
-            this.getSavedInterveiwQuestionList();
+            this.getVisibleSavedInterveiwQuestionList();
     }.bind(this));
 
     this.setState({title:"", category:"", questions:"", uniqueLink:"", uuid:""});
@@ -113,7 +113,7 @@ class Main extends React.Component {
     }
 
     addInfo() {
-        this.getSavedInterveiwQuestionList();
+        this.getVisibleSavedInterveiwQuestionList();
     }
 
     setQuestionList() {

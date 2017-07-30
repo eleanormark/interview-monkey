@@ -9,6 +9,10 @@ var helper = {
     return axios.get("/api/questionList");
   },
 
+  getVisibleSavedQuestionList: function() {
+    return axios.get("/api/visibleQuestionList");
+  },
+
   getQuestionsWithUUID: function(_uuid) {
     return axios.get("/api/questionsuuid?uuid=" + _uuid);
   },
