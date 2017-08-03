@@ -125,7 +125,6 @@ module.exports.deleteQuestionList = function(req, res) {
        function(err) {
         if (!err) {
             res.send("SUCCESS!");
-            console.log("update is Visible for question list _id", req.body._id);
            
             //Delete current list if response array lenght is 0.
             QuestionList.findOne({

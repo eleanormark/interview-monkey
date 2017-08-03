@@ -189,7 +189,7 @@ class Main extends React.Component {
                                 id="questions-modal"      
                                 required
                                 name="input-questions"
-                                placeholder="Enter questions separated by two new line breaks. Text may be formatted with Markdown"
+                                placeholder="Enter questions separated by two new line breaks. Text may be formatted with Markdown."
                                 > 
                                     {this.state.modalQuestionStr}
                                 </textarea>
@@ -210,6 +210,5 @@ class Main extends React.Component {
         );
     }
 }
-
 
 export default Main;

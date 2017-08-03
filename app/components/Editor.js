@@ -35,5 +35,4 @@ export class Editor extends React.Component {
   }
 }
 
-
 export default Editor;

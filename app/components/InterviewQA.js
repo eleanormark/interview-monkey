@@ -147,9 +147,7 @@ class InterviewQA extends React.Component {
 
               return (
                 <div key={i}>
-                    <p>&nbsp;</p>
                     <ReactMarkdown source={quest.question} />
-                    <p>&nbsp;</p>
                     <Editor index={i}/>
                 </div>
               );

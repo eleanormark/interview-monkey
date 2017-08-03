@@ -26,4 +26,5 @@ const NavbarInstance = () => {
   </Navbar>
   )
 };
+
 export default NavbarInstance;
