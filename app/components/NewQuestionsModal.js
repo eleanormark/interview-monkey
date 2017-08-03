@@ -140,7 +140,7 @@ render() {
                   onChange={this.handleSetQuestions}
                   required
                   name="input-questions"
-                  placeholder="Enter questions separated by two new line breaks."
+                  placeholder="Enter questions separated by two new line breaks.  Text may be formatted with Markdown"
                 > 
               </textarea>
               </div>
