@@ -4,6 +4,7 @@ import Answer from './components/Answer.js';
 import ResponseListItem from './components/ResponseListItem';
 import helpers from "./components/utils/helpers";
 import { Modal, Button } from 'react-bootstrap';
+import ReactMarkdown from 'react-markdown';
 
 class ResponseList extends React.Component {
     constructor() {
@@ -180,7 +181,7 @@ class ResponseList extends React.Component {
                                         <div>Position:  {this.state.position}</div>
                                         <div>Email: {this.state.email}</div>
                                         <div>Replied Date: {this.state.repliedDate}</div>
-                                        <div>Question List: {this.state.qaList}</div>
+                                        <ReactMarkdown source={this.state.qaList} />
                                         <br />
                                         {this.state.answers.map(function(ans, i) {
                                             return (

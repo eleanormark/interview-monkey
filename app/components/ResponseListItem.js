@@ -1,8 +1,6 @@
 import React from 'react';
 
 const ResponseListItem = (data) => {
-    console.log("============== in ResponseListItem===============")
-    console.log(data);
     return (
         <tr>
             <td>{data.res2.intervieweeFullName}</td>

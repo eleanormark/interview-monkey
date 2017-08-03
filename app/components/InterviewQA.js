@@ -1,6 +1,7 @@
 import React from 'react';
 import Editor from './Editor';
 import helpers from "./utils/helpers";
+import ReactMarkdown from 'react-markdown';
 
 class InterviewQA extends React.Component {
 
@@ -147,7 +148,7 @@ class InterviewQA extends React.Component {
               return (
                 <div key={i}>
                     <p>&nbsp;</p>
-                    <strong>{quest.question}</strong>
+                    <ReactMarkdown source={quest.question} />
                     <p>&nbsp;</p>
                     <Editor index={i}/>
                 </div>
