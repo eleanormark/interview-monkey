@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var QuestionSchema = new Schema({
@@ -19,10 +19,10 @@ var AnswerSchema = new Schema({
 
 var ResponseSchema = new Schema({
   intervieweeFullName: {
-    type: String 
+    type: String
   },
   intervieweeEmail: {
-    type: String 
+    type: String
   },
   intervieweePosition: {
     type: String
@@ -60,12 +60,12 @@ var QuestionListSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }, 
+  },
   isVisibleQuestionListPage: {
     type: Boolean,
     default: true
   }
 });
 
-var QuestionList = mongoose.model("QuestionList", QuestionListSchema);
+var QuestionList = mongoose.model('QuestionList', QuestionListSchema);
 module.exports = QuestionList;

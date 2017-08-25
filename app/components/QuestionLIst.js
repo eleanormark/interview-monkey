@@ -1,19 +1,20 @@
-import React from 'react';
-import QuestionListItem from './QuestionListItem';
-import { Modal, Button } from 'react-bootstrap';
+import React from "react";
+import QuestionListItem from "./QuestionListItem";
+import { Modal, Button } from "react-bootstrap";
 
-const QuestionList = (props) => {
-  
+const QuestionList = props => {
   const questionListItems = props.objs.map((obj, index) => {
-    return <QuestionListItem 
-              key={obj._id} 
-              info={obj} 
-              index={index}
-              addInfo={props.addInfo}
-              onDeleteList={props.onListDelete}
-              onEditList={props.onListEdit}
-              onGenerateUUID={props.onUUIDGenerate}
-            />
+    return (
+      <QuestionListItem
+        key={obj._id}
+        info={obj}
+        index={index}
+        addInfo={props.addInfo}
+        onDeleteList={props.onListDelete}
+        onEditList={props.onListEdit}
+        onGenerateUUID={props.onUUIDGenerate}
+      />
+    );
   });
 
   return (

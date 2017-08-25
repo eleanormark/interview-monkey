@@ -1,8 +1,8 @@
-import React from 'react';
-import brace from 'brace';
-import AceEditor from 'react-ace';
-import 'brace/mode/javascript';
-import 'brace/theme/chrome';
+import React from "react";
+import brace from "brace";
+import AceEditor from "react-ace";
+import "brace/mode/javascript";
+import "brace/theme/chrome";
 
 export class Editor extends React.Component {
   constructor(props) {
@@ -12,8 +12,8 @@ export class Editor extends React.Component {
   }
 
   onChange(newValue, e) {
-    this.setState({value: newValue})
-    var editor = this.refs.ace.editor
+    this.setState({ value: newValue });
+    var editor = this.refs.ace.editor;
   }
   render() {
     return (
@@ -22,14 +22,17 @@ export class Editor extends React.Component {
           mode="javascript"
           theme="chrome"
           ref="ace"
-          value= {this.state.value}
+          value={this.state.value}
           onChange={this.onChange}
-          name={"snippet_id_" + this.props.index }
-          editorProps={{$blockScrolling: true}}
-          width = '100%'
-          height = '200px'
+          name={"snippet_id_" + this.props.index}
+          editorProps={{ $blockScrolling: true }}
+          width="100%"
+          height="200px"
         />
-        <div id={"id_answer_"+ this.props.index} data-snippet = {this.state.value} ></div>
+        <div
+          id={"id_answer_" + this.props.index}
+          data-snippet={this.state.value}
+        />
       </div>
     );
   }
