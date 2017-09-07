@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var Article = require('./models/Interviewer');
+require('./models/User');
 
 // Create Instance of Express
 var app = express();
