@@ -23,7 +23,7 @@ const NavbarInstance = () => {
           </NavItem>
           <li>
             <a
-              href="https://interview-monkey.herokuapp.com/#/qa/700f0ea9-7a9a-4917-ac20-3953547f78a0"
+              href="https://interview-monkey.herokuapp.com/#/qa/53d6e5c7-14df-4217-9cd0-fa7484a8c41a"
               target="_blank"
             >
               Practice Questions
